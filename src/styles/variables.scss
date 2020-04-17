@@ -1,0 +1,22 @@
+:root {
+  --animation-timer: 200ms;
+  --base-transition-properties: outline, outline-offset;
+  --border-radius: 0.375rem;
+  --black: #333;
+  --button-padding: 0.625em 1em;
+  --container-width: 72rem;
+  --content-padding: 0.5rem 1rem;
+  --margin-horizontal: 0 0.5rem;
+  --margin-vertical: 0.5rem 0;
+  --padding-horizontal: 0 0.5rem;
+  --padding-vertical: 0.5rem 0;
+  --primary-color: #60308D;
+  --primary-color-light: #fbe3ff;
+  --primary-color-dark: #250d53;
+  --white: #fff;
+}
+
+$layout-xl-size: 75rem; // 1200px
+$layout-lg-size: 62rem; // 992px
+$layout-md-size: 48rem; // 768px
+$layout-sm-size: 36rem; // 576px

@@ -1,0 +1,7 @@
+<button
+  class="skip-link"
+  *ngFor="let link of skipLinks; trackBy: trackByFn"
+  (click)="focusOnElement(link.id)"
+>
+  {{link.text}}
+</button>
