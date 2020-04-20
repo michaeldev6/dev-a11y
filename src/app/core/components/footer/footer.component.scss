@@ -1,0 +1,27 @@
+@import '../../../../styles/mixins';
+
+footer {
+  @include flex(row, space-between, center);
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: var(--content-padding);
+
+  .info {
+    .author {
+      font-size: 0.875rem;
+    }
+
+    .website {
+      font-size: 0.625rem;
+
+      a {
+        color: var(--white);
+
+        &:focus {
+          outline: var(--outline-width) solid var(--white);
+        }
+      }
+    }
+  }
+}
+

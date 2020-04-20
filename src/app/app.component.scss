@@ -1,0 +1,6 @@
+@import '../styles/mixins';
+
+:host {
+  @include flex(column, space-between, stretch);
+  min-height: 100vh;
+}
