@@ -4,7 +4,7 @@ import {FocusService} from '../../services/focus.service';
 import {SkipLinksService} from '../../services/skip-links.service';
 import {ISkipLink} from '../../../shared/interfaces/skip-link';
 import {takeWhile} from 'rxjs/operators';
-import {FocusableIds} from '../../../shared/constants/focusable-ids';
+import {FocusableIds} from '../../../shared/enums/focusable-ids';
 
 @Component({
   selector: 'app-skip-links',

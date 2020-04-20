@@ -8,12 +8,14 @@
   --content-padding: 0.5rem 1rem;
   --margin-horizontal: 0 0.5rem;
   --margin-vertical: 0.5rem 0;
+  --outline-width: 0.1875rem;
   --padding-horizontal: 0 0.5rem;
   --padding-vertical: 0.5rem 0;
   --primary-color: #60308D;
   --primary-color-light: #fbe3ff;
   --primary-color-dark: #250d53;
   --white: #fff;
+  --min-dimensions: 2.75rem;
 }
 
 $layout-xl-size: 75rem; // 1200px

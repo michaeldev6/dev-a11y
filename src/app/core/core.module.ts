@@ -6,6 +6,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PageAnnouncerComponent } from './components/page-announcer/page-announcer.component';
 import { SkipLinksComponent } from './components/skip-links/skip-links.component';
 import {SharedModule} from '../shared/shared.module';
+import {RouterModule} from '@angular/router';
+
 
 const COMPONENTS = [
   BaseComponent,
@@ -21,6 +23,7 @@ const COMPONENTS = [
   ],
   imports: [
     CommonModule,
+    RouterModule,
     SharedModule
   ],
   exports: [

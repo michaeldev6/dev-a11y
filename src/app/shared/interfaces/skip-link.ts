@@ -1,4 +1,4 @@
-import {FocusableIds} from '../constants/focusable-ids';
+import {FocusableIds} from '../enums/focusable-ids';
 
 export interface ISkipLink {
   text: string;

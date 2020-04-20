@@ -1,5 +1,5 @@
 import {ElementRef, Injectable} from '@angular/core';
-import {FocusableIds} from '../../shared/constants/focusable-ids';
+import {FocusableIds} from '../../shared/enums/focusable-ids';
 
 @Injectable({
   providedIn: 'root'

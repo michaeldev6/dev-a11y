@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseComponent} from '../base/base.component';
-import {FocusableIds} from '../../../shared/constants/focusable-ids';
+import {FocusableIds} from '../../../shared/enums/focusable-ids';
 
 
 @Component({

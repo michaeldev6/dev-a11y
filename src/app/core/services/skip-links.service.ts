@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ISkipLink} from '../../shared/interfaces/skip-link';
-import {FocusableIds} from '../../shared/constants/focusable-ids';
+import {FocusableIds} from '../../shared/enums/focusable-ids';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({

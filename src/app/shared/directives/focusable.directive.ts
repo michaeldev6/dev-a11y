@@ -1,11 +1,16 @@
 import {AfterViewInit, Directive, ElementRef, Input, OnDestroy, Renderer2} from '@angular/core';
-import {FocusableIds} from '../constants/focusable-ids';
+import {FocusableIds} from '../enums/focusable-ids';
 import {FocusService} from '../../core/services/focus.service';
 
 @Directive({
   selector: '[appFocusable]'
 })
 export class FocusableDirective implements AfterViewInit, OnDestroy {
+
+  private alreadyTabbableElements: string[] = [
+    'button',
+    'a'
+  ];
 
   @Input() appFocusable: FocusableIds; //
   @Input() isTabbable = false;
@@ -24,7 +29,9 @@ export class FocusableDirective implements AfterViewInit, OnDestroy {
     }
 
     if (!!this.element && !!this.appFocusable) {
-      this.renderer.setAttribute(this.element.nativeElement, 'tabindex', this.isTabbable ? '0' : '-1');
+      if (this.alreadyTabbableElements.indexOf(this.element.nativeElement.localName) === -1) {
+        this.renderer.setAttribute(this.element.nativeElement, 'tabindex', this.isTabbable ? '0' : '-1');
+      }
       this.focusService.registerFocusableElement(this.appFocusable, this.element);
     }
   }

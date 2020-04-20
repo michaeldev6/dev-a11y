@@ -1,3 +1,27 @@
 <header>
-  header works!
+  <div class="site-title">
+    <div class="main">Dev-A11y</div>
+    <div class="sub">A resource for accessibility website developers</div>
+  </div>
+  <nav #navigation aria-label="Main">
+    <button
+      #triggerButton
+      [appFocusable]="focusableIds.MAIN_NAVIGATION"
+      [isTabbable]="true"
+      (click)="toggleMenu()"
+      aria-haspopup="true"
+      [attr.aria-expanded]="isMenuOpen"
+    >
+      <i class="fa fa-bars"></i>
+      <span class="sr-only">{{isMenuOpen ? 'click to close menu' : 'click to open menu'}}</span>
+    </button>
+    <ul *ngIf="isMenuOpen" class="nav">
+      <li><a routerLink="/wcag">WCAG Checklist</a></li>
+      <li><a routerLink="/aria">ARIA-Roles</a></li>
+      <li><a routerLink="/links-resources">Links and Resources</a></li>
+      <li><a routerLink="/code-samples">Code Samples</a></li>
+      <li><a routerLink="/screen-readers">Screen Readers</a></li>
+      <li><a #lastLink routerLink="/">Main Page</a></li>
+    </ul>
+  </nav>
 </header>

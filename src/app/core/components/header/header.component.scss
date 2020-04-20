@@ -1,0 +1,60 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+header {
+  @include flex(row, space-between, center);
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: var(--content-padding);
+
+  .site-title {
+    .main {
+      font-size: 1.75rem;
+      font-weight: bold;
+    }
+
+    .sub {
+      font-size: 0.875rem;
+    }
+  }
+
+  nav {
+    position: relative;
+
+    button {
+      &:focus {
+        outline: var(--outline-width) solid var(--white);
+      }
+    }
+
+    ul.nav {
+      @include border-radius(var(--border-radius));
+      @include box-shadow(0 0 0.1875rem 0 var(--black));
+      @include flex(column, flex-start, stretch);
+      background-color: var(--white);
+      color: var(--black);
+      list-style: none;
+      margin: 0;
+      min-width: 15rem;
+      padding: 0.5rem 0;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 0.5rem);
+
+      a {
+        color: var(--black);
+        display: block;
+        padding: var(--content-padding);
+        text-decoration: none;
+
+        &:focus,
+        &:hover {
+          background-color: var(--primary-color);
+          color: var(--white);
+        }
+      }
+    }
+  }
+}
+
+
