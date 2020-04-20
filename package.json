@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:ngrok": "ngrok http --host-header=rewrite 4200",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
