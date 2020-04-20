@@ -5,7 +5,8 @@ import {CodeSamplesComponent} from './pages/code-samples/code-samples.component'
 const routes: Routes = [
   {
     path: '',
-    component: CodeSamplesComponent
+    component: CodeSamplesComponent,
+    pathMatch: 'full'
   }
 ];
 

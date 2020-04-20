@@ -56,6 +56,10 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     }
   }
 
+  onLinkClick(): void {
+    this.isMenuOpen = false;
+  }
+
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }

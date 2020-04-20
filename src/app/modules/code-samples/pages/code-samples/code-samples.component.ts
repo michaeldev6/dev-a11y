@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import {BasePageComponent} from '../../../../core/components/base-page/base-page.component';
 
 @Component({
   selector: 'app-code-samples',
   templateUrl: './code-samples.component.html',
   styleUrls: ['./code-samples.component.scss']
 })
-export class CodeSamplesComponent implements OnInit {
+export class CodeSamplesComponent extends BasePageComponent{
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  pageTitle = 'Web Accessibility Code Samples';
 }

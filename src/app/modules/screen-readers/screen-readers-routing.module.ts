@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LinksResourcesComponent} from './pages/links-resources/links-resources.component';
+import {ScreenReadersComponent} from './pages/screen-readers/screen-readers.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LinksResourcesComponent,
+    component: ScreenReadersComponent,
     pathMatch: 'full'
   }
 ];
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LinksResourcesRoutingModule { }
+export class ScreenReadersRoutingModule { }

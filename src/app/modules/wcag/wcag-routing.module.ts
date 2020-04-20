@@ -5,7 +5,8 @@ import {WcagComponent} from './pages/wcag/wcag.component';
 const routes: Routes = [
   {
     path: '',
-    component: WcagComponent
+    component: WcagComponent,
+    pathMatch: 'full'
   }
 ];
 

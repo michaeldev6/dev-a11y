@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LinksResourcesComponent} from './pages/links-resources/links-resources.component';
+import {AriaComponent} from './pages/aria/aria.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LinksResourcesComponent,
+    component: AriaComponent,
     pathMatch: 'full'
   }
 ];
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LinksResourcesRoutingModule { }
+export class AriaRoutingModule { }

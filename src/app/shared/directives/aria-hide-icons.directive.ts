@@ -5,5 +5,5 @@ import {Directive, HostBinding, Input} from '@angular/core';
 })
 export class AriaHideIconsDirective {
 
-  @HostBinding('aria-hidden') @Input('aria-hidden') ariaHidden = 'true';
+  @HostBinding('attr.aria-hidden') @Input('aria-hidden') ariaHidden = 'true';
 }

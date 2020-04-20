@@ -7,10 +7,12 @@ import { PageAnnouncerComponent } from './components/page-announcer/page-announc
 import { SkipLinksComponent } from './components/skip-links/skip-links.component';
 import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
+import { BasePageComponent } from './components/base-page/base-page.component';
 
 
 const COMPONENTS = [
   BaseComponent,
+  BasePageComponent,
   HeaderComponent,
   FooterComponent,
   PageAnnouncerComponent,
