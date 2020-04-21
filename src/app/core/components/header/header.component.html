@@ -17,7 +17,12 @@
     </button>
     <ul *ngIf="isMenuOpen" class="nav">
       <li *ngFor="let link of routeItems; trackBy: trackByFn">
-        <a #routeItem (click)="onLinkClick(link.route)" [routerLink]="link.route">
+        <a
+          #routeItem
+          (click)="onLinkClick(link.route)"
+          [routerLink]="link.route"
+          [ngClass]="{'active': currentRoute === link.route}"
+        >
           {{link.text}}
           <span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
           <span *ngIf="currentRoute === link.route" class="sr-only">. You are currently on this page.</span>

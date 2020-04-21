@@ -47,6 +47,11 @@ header {
         padding: var(--content-padding);
         text-decoration: none;
 
+        &.active {
+          font-weight: 900;
+          color: var(--primary-color);
+        }
+
         &:focus,
         &:hover {
           background-color: var(--primary-color);
