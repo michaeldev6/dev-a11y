@@ -4,7 +4,7 @@ import {FocusableIds} from '../../../shared/enums/focusable-ids';
 import {KeyboardService} from '../../services/keyboard.service';
 import {filter, map, takeWhile} from 'rxjs/operators';
 import {IKeypressEvent} from '../../../shared/interfaces/keypress-event';
-import {TAB_KEY} from '../../../shared/constants/keycodes';
+import {ESC_KEY, TAB_KEY} from '../../../shared/constants/keycodes';
 import {IRouteItem} from '../../../shared/interfaces/route-item';
 import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 
@@ -70,6 +70,10 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     this.getRoute();
   }
 
+  private closeMenu(): void {
+    this.isMenuOpen = false;
+  }
+
   getRoute(): void {
     this.router.events
       .pipe(
@@ -77,7 +81,6 @@ export class HeaderComponent extends BaseComponent implements OnInit {
       )
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.url;
-        console.log('Current Route: ', this.currentRoute);
       });
   }
 
@@ -90,22 +93,41 @@ export class HeaderComponent extends BaseComponent implements OnInit {
       });
   }
 
+  private handleEscPress(event: IKeypressEvent): void {
+    // if the user pressed esc while the nav is open
+    if (this.navigationContainerElement.nativeElement.contains(event.target)) {
+      this.closeMenu();
+      this.toggleNavButton.nativeElement.focus();
+    }
+  }
+
   private handleKeypressEvent(event: IKeypressEvent): void {
-    if (this.isMenuOpen && event.keycode === TAB_KEY) {
-      if (
-        // tabbing off of the sub menu
-        (this.links.last.nativeElement === event.target && !event.isShiftPressed)
-        // tabbing off before the toggle menu button and not into sub menu
-        || (this.toggleNavButton.nativeElement === event.target && event.isShiftPressed)
-      ) {
-        this.isMenuOpen = false;
+    if (this.isMenuOpen) {
+      switch(event.keycode) {
+        case TAB_KEY:
+          this.handleTabPress(event);
+          break;
+        case ESC_KEY:
+          this.handleEscPress(event);
       }
+
+    }
+  }
+
+  private handleTabPress(event: IKeypressEvent): void {
+    if (
+      // tabbing off of the sub menu
+      (this.links.last.nativeElement === event.target && !event.isShiftPressed)
+      // tabbing off before the toggle menu button and not into sub menu
+      || (this.toggleNavButton.nativeElement === event.target && event.isShiftPressed)
+    ) {
+      this.closeMenu();
     }
   }
 
   onLinkClick(route: string): void {
     if (route !== this.currentRoute) {
-      this.isMenuOpen = false;
+      this.closeMenu();
     }
   }
 
