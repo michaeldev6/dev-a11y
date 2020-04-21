@@ -16,12 +16,13 @@
       <span class="sr-only">{{isMenuOpen ? 'click to close menu' : 'click to open menu'}}</span>
     </button>
     <ul *ngIf="isMenuOpen" class="nav">
-      <li><a (click)="onLinkClick()" routerLink="/wcag">WCAG Checklist</a></li>
-      <li><a (click)="onLinkClick()" routerLink="/aria">ARIA-Roles</a></li>
-      <li><a (click)="onLinkClick()" routerLink="/code-samples">Code Samples</a></li>
-      <li><a (click)="onLinkClick()" routerLink="/screen-readers">Screen Readers</a></li>
-      <li><a (click)="onLinkClick()" routerLink="/links-resources">Links and Resources</a></li>
-      <li><a #lastLink (click)="onLinkClick()" routerLink="/">Main Page</a></li>
+      <li *ngFor="let link of routeItems; trackBy: trackByFn">
+        <a #routeItem (click)="onLinkClick(link.route)" [routerLink]="link.route">
+          {{link.text}}
+          <span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
+          <span *ngIf="currentRoute === link.route" class="sr-only">. You are currently on this page.</span>
+        </a>
+      </li>
     </ul>
   </nav>
 </header>
