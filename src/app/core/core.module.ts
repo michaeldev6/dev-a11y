@@ -8,12 +8,14 @@ import { SkipLinksComponent } from './components/skip-links/skip-links.component
 import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
 import { BasePageComponent } from './components/base-page/base-page.component';
+import { FontSizerComponent } from './components/font-sizer/font-sizer.component';
 
 
 const COMPONENTS = [
   BaseComponent,
   BasePageComponent,
   HeaderComponent,
+  FontSizerComponent,
   FooterComponent,
   PageAnnouncerComponent,
   SkipLinksComponent

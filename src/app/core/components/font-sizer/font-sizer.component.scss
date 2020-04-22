@@ -1,0 +1,14 @@
+@import '../../../../styles/mixins';
+
+:host {
+  @include flex(row, flex-start, center);
+
+  button {
+    background-color: transparent;
+    color: var(--white);
+
+    &:focus {
+      outline: var(--outline-width) solid var(--white);
+    }
+  }
+}

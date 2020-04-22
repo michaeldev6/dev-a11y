@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, fromEvent, Observable} from 'rxjs';
 import {IKeypressEvent} from '../../shared/interfaces/keypress-event';
 import {filter} from 'rxjs/operators';
+import {WindowUtil} from '../../shared/utils/window.util';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class KeyboardService {
   }
 
   private setupKeyDownListener(): void {
-    fromEvent(document, 'keydown').subscribe((event: KeyboardEvent) => {
+    fromEvent(WindowUtil.nativeDocument, 'keydown').subscribe((event: KeyboardEvent) => {
       const keypressEvent: IKeypressEvent = {
         keycode: event.which || event.keyCode,
         isShiftPressed: event.shiftKey,
