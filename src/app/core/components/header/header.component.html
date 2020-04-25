@@ -12,12 +12,13 @@
         [isTabbable]="true"
         (click)="toggleMenu()"
         aria-haspopup="true"
+        aria-owns="main-nav"
         [attr.aria-expanded]="isMenuOpen"
       >
         <i class="fa fa-bars"></i>
         <span class="sr-only">{{isMenuOpen ? 'click to close menu' : 'click to open menu'}}</span>
       </button>
-      <ul *ngIf="isMenuOpen" class="nav">
+      <ul *ngIf="isMenuOpen" id="main-nav" class="nav">
         <li *ngFor="let link of routeItems; trackBy: trackByFn">
           <a
             #routeItem

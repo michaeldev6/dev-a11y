@@ -109,8 +109,8 @@ export class HeaderComponent extends BaseComponent implements OnInit {
           break;
         case ESC_KEY:
           this.handleEscPress(event);
+          break;
       }
-
     }
   }
 

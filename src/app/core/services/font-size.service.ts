@@ -6,15 +6,20 @@ import {BehaviorSubject, Observable} from 'rxjs';
 })
 export class FontSizeService {
 
+  private _defaultFontSize = 16;
   private _minFontSize = 10;
   private _maxFontSize = 32;
   private _siteBaseFontSize = 16;
-  private _fontSize$: BehaviorSubject<number> = new BehaviorSubject(this._siteBaseFontSize);
+  private _fontSize$: BehaviorSubject<number> = new BehaviorSubject(this._defaultFontSize);
 
   constructor() { }
 
   getSiteFontSize(): Observable<number> {
     return this._fontSize$;
+  }
+
+  resetFontSize(): void {
+    this.updateSiteFontSize(this._defaultFontSize);
   }
 
   updateSiteFontSize(size: number): void {
