@@ -13,9 +13,5 @@ button {
   &.skip-link {
      @include hidden-focusable-button;
     font-size: 0.75rem;
-
-    &:focus {
-      outline: var(--outline-width) solid var(--white);
-    }
   }
 }

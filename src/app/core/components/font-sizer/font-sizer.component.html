@@ -1,39 +1,30 @@
-<button
-  #toggleSizer
-  aria-haspopup="true"
-  [attr.aria-expanded]="isFontSizerShowing"
-  aria-label="Change font size"
-  aria-owns="font-size-feature"
-  class="font-sizer__toggle"
-  (click)="toggleShowingFontSizer()">
-  <i class="fa fa-font"></i>
-</button>
-<div
-  *ngIf="isFontSizerShowing"
-  class="font-sizer__container"
-  id="font-size-feature">
-  <div class="font-sizer__buttons">
-    <button
-      #decrease
-      (click)="decreaseFontSize()"
-      aria-label="Decrease site text size">
-      -
-    </button>
-    <div>{{fontSize}}px</div>
-    <button
-      #increase
-      (click)="increaseFontSize()"
-      aria-label="Increase site text size">
-      +
-    </button>
-  </div>
-  <button
-    #resetSize
-    class="font-sizer__reset"
-    (click)="resetFontSize()"
-    aria-label="reset to default font size">
-    Reset
-  </button>
-</div>
-
+<app-pop-over
+	buttonAriaLabel="Change font size"
+	[popoverPosition]="popoverPosition.BottomCentered"
+	[showCloseButton]="false"
+	>
+    <i pop-over-button class="fa fa-font"></i>
+	<div
+		pop-over-content
+		class="font-sizer__container">
+		<div class="font-sizer__buttons">
+			<button (click)="decreaseFontSize()" aria-label="Decrease site text size">
+				 -
+			</button>
+			<div>
+				{{fontSize}}px
+			</div>
+			<button	(click)="increaseFontSize()" aria-label="Increase site text size">
+				+
+			</button>
+		</div>
+		<button
+			#lastElement
+			class="font-sizer__reset"
+			(click)="resetFontSize()"
+			aria-label="Reset to default font size">
+			Reset
+		</button>
+	</div>
+</app-pop-over>
 

@@ -1,0 +1,26 @@
+<div class="pop-over__container">
+	<button
+		#popOverButton
+		aria-haspopup="true"
+		[attr.aria-expanded]="isExpanded"
+		[attr.aria-owns]="id"
+		[class]="'pop-over__toggle ' + buttonOutlineStyle"
+		(click)="togglePopover()">
+		<ng-content select="[pop-over-button]"></ng-content>
+	</button>
+	<div
+		#popOverContent
+		*ngIf="isExpanded"
+		[class]="'pop-over__content ' + popoverPosition"
+		tabindex="-1"
+		[id]="id">
+		<ng-content select="[pop-over-content]"></ng-content>
+		<button
+			aria-label="Close pop over"
+			*ngIf="showCloseButton" (click)="close()"
+			class="pop-over__close">
+			<i class="fa fa-times"></i>
+		</button>
+	</div>
+</div>
+

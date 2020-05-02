@@ -26,11 +26,11 @@ header {
       position: relative;
       margin-left: 1rem;
 
-      button {
-        &:focus {
-          outline: var(--outline-width) solid var(--white);
-        }
-      }
+      //button {
+      //  &:focus {
+      //    outline: var(--outline-width) solid var(--white);
+      //  }
+      //}
 
       ul.nav {
         @include border-radius(var(--border-radius));

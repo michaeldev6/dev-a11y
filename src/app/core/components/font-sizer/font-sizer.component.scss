@@ -4,24 +4,24 @@
   position: relative;
 }
 
-.font-sizer__toggle {
-  &:focus {
-    outline: var(--outline-width) solid var(--white);
-  }
-}
+//.font-sizer__toggle {
+//  &:focus {
+//    outline: var(--outline-width) solid var(--white);
+//  }
+//}
 
 .font-sizer__container {
-  @include border-radius(0.5rem);
-  @include box-shadow(0 0 0.25rem 0 rgba(0,0,0,0.5));
+  //@include border-radius(0.5rem);
+  //@include box-shadow(0 0 0.25rem 0 rgba(0,0,0,0.5));
   @include flex(column, flex-start, center);
-  background-color: var(--white);
+  //background-color: var(--white);
   color: var(--black);
-  left: 50%;
-  padding: var(--content-padding);
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  transform: translateX(-50%);
-  width: initial;
+  //left: 50%;
+  //padding: var(--content-padding);
+  //position: absolute;
+  //top: calc(100% + 0.5rem);
+  //transform: translateX(-50%);
+  //width: initial;
 
   .font-sizer__buttons {
     @include flex(row, flex-start, center);

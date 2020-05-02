@@ -1,0 +1,51 @@
+@import '../../../../styles/mixins';
+
+.pop-over__container {
+	position: relative;
+
+	.pop-over__content {
+		@include border-radius(0.5rem);
+		@include box-shadow(0 0 0.25rem 0 rgba(0,0,0,0.5));
+		@include flex(column, center, center);
+		background-color: var(--white);
+		padding: var(--content-padding);
+		position: absolute;
+		width: initial;
+		z-index: 9999;
+
+		&.bottom-centered,
+		&.bottom-right,
+		{
+			top: calc(100% + var(--primary-spacing));
+		}
+
+		&.bottom-centered {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&.bottom-right {
+			right: 0;
+		}
+
+		&.right-bottom,
+		&.right-centered,
+		&.right-top {
+			left: calc(100% + var(--primary-spacing));
+		}
+
+		&.right-top {
+			top: 0;
+		}
+	}
+
+	.pop-over__close {
+		height: var(--min-dimensions);
+		width: var(--min-dimensions);
+		position: absolute;
+		top: -0.25rem;
+		right: -0.25rem;
+		font-size: 0.75rem;
+		background-color: transparent;
+	}
+}

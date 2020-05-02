@@ -1,37 +1,40 @@
 <header>
-  <div class="site-title">
-    <div class="main">Dev-A11y <i class="fa fa-universal-access"></i></div>
-    <div class="sub">A resource for accessibility website developers</div>
-  </div>
-  <div class="right-side">
-    <app-font-sizer></app-font-sizer>
-    <nav #navigation aria-label="Main">
-      <button
-        #triggerButton
-        [appFocusable]="focusableIds.MAIN_NAVIGATION"
-        [isTabbable]="true"
-        (click)="toggleMenu()"
-        aria-haspopup="true"
-        aria-owns="main-nav"
-        [attr.aria-expanded]="isMenuOpen"
-      >
-        <i class="fa fa-bars"></i>
-        <span class="sr-only">{{isMenuOpen ? 'click to close menu' : 'click to open menu'}}</span>
-      </button>
-      <ul *ngIf="isMenuOpen" id="main-nav" class="nav">
-        <li *ngFor="let link of routeItems; trackBy: trackByFn">
-          <a
-            #routeItem
-            (click)="onLinkClick(link.route)"
-            [routerLink]="link.route"
-            [ngClass]="{'active': currentRoute === link.route}"
-          >
-            {{link.text}}
-            <span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
-            <span *ngIf="currentRoute === link.route" class="sr-only">. You are currently on this page.</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+	<div class="site-title">
+		<div class="main">
+			Dev-A11y
+			<i class="fa fa-universal-access"></i>
+		</div>
+		<div class="sub">
+			A resource for accessibility website developers
+		</div>
+	</div>
+	<div class="right-side">
+		<app-font-sizer></app-font-sizer>
+		<nav #navigation aria-label="Main">
+			<button
+				#triggerButton
+				[appFocusable]="focusableIds.MAIN_NAVIGATION"
+				[isTabbable]="true"
+				(click)="toggleMenu()"
+				aria-haspopup="true"
+				aria-owns="main-nav"
+				[attr.aria-expanded]="isMenuOpen">
+				<i class="fa fa-bars"></i>
+				<span class="sr-only">{{isMenuOpen ? 'click to close menu' : 'click to open menu'}}</span>
+			</button>
+			<ul *ngIf="isMenuOpen" id="main-nav" class="nav">
+				<li *ngFor="let link of routeItems; trackBy: trackByFn">
+					<a
+						#routeItem
+						(click)="onLinkClick(link.route)"
+						[routerLink]="link.route"
+						[ngClass]="{'active': currentRoute === link.route}">
+						{{link.text}}
+						<span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
+						<span *ngIf="currentRoute === link.route" class="sr-only">. You are currently on this page.</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 </header>

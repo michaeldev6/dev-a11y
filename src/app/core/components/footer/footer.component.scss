@@ -12,14 +12,10 @@ footer {
     }
 
     .website {
-      font-size: 0.625rem;
+      font-size: 0.75rem;
 
       a {
         color: var(--white);
-
-        &:focus {
-          outline: var(--outline-width) solid var(--white);
-        }
       }
     }
   }
