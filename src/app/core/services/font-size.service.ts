@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {AnnouncerService} from './announcer.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ export class FontSizeService {
   private _siteBaseFontSize = 16;
   private _fontSize$: BehaviorSubject<number> = new BehaviorSubject(this._defaultFontSize);
 
-  constructor() { }
+  constructor(
+  	private announcerService: AnnouncerService,
+  ) { }
 
   getSiteFontSize(): Observable<number> {
     return this._fontSize$;
@@ -23,8 +26,21 @@ export class FontSizeService {
   }
 
   updateSiteFontSize(size: number): void {
-    size = Math.max(this._minFontSize, Math.min(this._maxFontSize, size));
+  	let announcementText = '';
+  	if (size !== this._siteBaseFontSize) {
+		if (size < this._minFontSize) {
+			announcementText = `Smallest text size set at ${this._minFontSize} pixels`;
+			size = this._minFontSize;
+		} else if (size > this._maxFontSize) {
+			announcementText = `Largest text size set at ${this._maxFontSize} pixels`;
+			size = this._maxFontSize;
+		} else {
+			announcementText = `Text size set to ${size} pixels`;
+		}
+	}
+
     this._siteBaseFontSize = size;
+  	this.announcerService.triggerAnnouncement(announcementText);
     this._fontSize$.next(this._siteBaseFontSize);
   }
 }
