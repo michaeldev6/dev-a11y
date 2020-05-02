@@ -10,31 +10,47 @@
 	</div>
 	<div class="right-side">
 		<app-font-sizer></app-font-sizer>
-		<nav #navigation aria-label="Main">
-			<button
-				#triggerButton
-				[appFocusable]="focusableIds.MAIN_NAVIGATION"
-				[isTabbable]="true"
-				(click)="toggleMenu()"
-				aria-haspopup="true"
-				aria-owns="main-nav"
-				[attr.aria-expanded]="isMenuOpen">
-				<i class="fa fa-bars"></i>
-				<span class="sr-only">{{isMenuOpen ? 'click to close menu' : 'click to open menu'}}</span>
-			</button>
-			<ul *ngIf="isMenuOpen" id="main-nav" class="nav">
-				<li *ngFor="let link of routeItems; trackBy: trackByFn">
-					<a
-						#routeItem
-						(click)="onLinkClick(link.route)"
-						[routerLink]="link.route"
-						[ngClass]="{'active': currentRoute === link.route}">
-						{{link.text}}
-						<span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
-						<span *ngIf="currentRoute === link.route" class="sr-only">. You are currently on this page.</span>
-					</a>
-				</li>
-			</ul>
+		<nav aria-label="Main">
+			<app-pop-over
+				buttonAriaLabel="Main menu"
+				[showCloseButton]="false"
+				[popoverPosition]="menuPosition"
+				[focusableId]="mainNavigationId">
+				<i pop-over-button-content class="fa fa-bars"></i>
+				<ul pop-over-content class="nav">
+					<li *ngFor="let link of routeItems; trackBy: trackByFn; let i = index">
+						<a
+							#focusFirst
+							*ngIf="i === 0"
+							(click)="onLinkClick(link.route)"
+							[routerLink]="link.route"
+							[ngClass]="{'active': currentRoute === link.route}">
+							{{link.text}}
+							<span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
+							<span *ngIf="currentRoute === link.route" class="sr-only">. You are currently on this page.</span>
+						</a>
+						<a
+							*ngIf="i > 0 && i < routeItems.length - 1"
+							(click)="onLinkClick(link.route)"
+							[routerLink]="link.route"
+							[ngClass]="{'active': currentRoute === link.route}">
+							{{link.text}}
+							<span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
+							<span *ngIf="currentRoute === link.route" class="sr-only">. You are currently on this page.</span>
+						</a>
+						<a
+							#lastElement
+							*ngIf="i === routeItems.length - 1"
+							(click)="onLinkClick(link.route)"
+							[routerLink]="link.route"
+							[ngClass]="{'active': currentRoute === link.route}">
+							{{link.text}}
+							<span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
+							<span *ngIf="currentRoute === link.route" class="sr-only">. You are currently on this page.</span>
+						</a>
+					</li>
+				</ul>
+			</app-pop-over>
 		</nav>
 	</div>
 </header>

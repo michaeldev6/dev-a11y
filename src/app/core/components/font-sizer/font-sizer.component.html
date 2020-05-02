@@ -3,18 +3,18 @@
 	[popoverPosition]="popoverPosition.BottomCentered"
 	[showCloseButton]="false"
 	>
-    <i pop-over-button class="fa fa-font"></i>
+    <i pop-over-button-content class="fa fa-font"></i>
 	<div
 		pop-over-content
 		class="font-sizer__container">
 		<div class="font-sizer__buttons">
-			<button (click)="decreaseFontSize()" aria-label="Decrease site text size">
+			<button (click)="decreaseFontSize()" aria-label="Decrease text size">
 				 -
 			</button>
 			<div>
 				{{fontSize}}px
 			</div>
-			<button	(click)="increaseFontSize()" aria-label="Increase site text size">
+			<button	(click)="increaseFontSize()" aria-label="Increase text size">
 				+
 			</button>
 		</div>

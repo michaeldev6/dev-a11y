@@ -2,70 +2,54 @@
 @import '../../../../styles/mixins';
 
 header {
-  @include flex(row, space-between, center);
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: var(--content-padding);
+	@include flex(row, space-between, center);
+	background-color: var(--primary-color);
+	color: var(--white);
+	padding: var(--content-padding);
 
-  .site-title {
-    .main {
-      font-size: 1.75rem;
-      font-weight: bold;
-    }
+	.site-title {
+		.main {
+			font-size: 1.75rem;
+			font-weight: bold;
+		}
 
-    .sub {
-      font-size: 0.875rem;
-    }
-  }
+		.sub {
+			font-size: 0.875rem;
+		}
+	}
 
-  .right-side {
-    @include flex(row, flex-end, center);
+	.right-side {
+		@include flex(row, flex-end, center);
 
+		nav {
+			margin-left: 1rem;
 
-    nav {
-      position: relative;
-      margin-left: 1rem;
+			ul.nav {
+				@include flex(column, flex-start, stretch);
+				color: var(--black);
+				list-style: none;
+				margin: 0;
+				min-width: 16rem;
+				padding: 0;
 
-      //button {
-      //  &:focus {
-      //    outline: var(--outline-width) solid var(--white);
-      //  }
-      //}
+				a {
+					color: var(--black);
+					display: block;
+					padding: var(--content-padding);
+					text-decoration: none;
 
-      ul.nav {
-        @include border-radius(var(--border-radius));
-        @include box-shadow(0 0 0.1875rem 0 var(--black));
-        @include flex(column, flex-start, stretch);
-        background-color: var(--white);
-        color: var(--black);
-        list-style: none;
-        margin: 0;
-        min-width: 16rem;
-        padding: 0.5rem 0;
-        position: absolute;
-        right: 0;
-        top: calc(100% + 0.5rem);
+					&.active {
+						font-weight: 900;
+						color: var(--primary-color);
+					}
 
-        a {
-          color: var(--black);
-          display: block;
-          padding: var(--content-padding);
-          text-decoration: none;
-
-          &.active {
-            font-weight: 900;
-            color: var(--primary-color);
-          }
-
-          &:focus,
-          &:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-          }
-        }
-      }
-    }
-  }
+					&:focus,
+					&:hover {
+						background-color: var(--primary-color);
+						color: var(--white);
+					}
+				}
+			}
+		}
+	}
 }
-
-

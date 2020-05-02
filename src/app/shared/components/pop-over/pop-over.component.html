@@ -2,11 +2,13 @@
 	<button
 		#popOverButton
 		aria-haspopup="true"
+		[appFocusable]="focusableId"
+		[isTabbable]="true"
 		[attr.aria-expanded]="isExpanded"
 		[attr.aria-owns]="id"
 		[class]="'pop-over__toggle ' + buttonOutlineStyle"
 		(click)="togglePopover()">
-		<ng-content select="[pop-over-button]"></ng-content>
+		<ng-content select="[pop-over-button-content]"></ng-content>
 	</button>
 	<div
 		#popOverContent

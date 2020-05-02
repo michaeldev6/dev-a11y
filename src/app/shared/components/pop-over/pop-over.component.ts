@@ -1,4 +1,4 @@
-import {Component, ContentChild, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, ContentChild, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {BaseComponent} from '../../../core/components/base/base.component';
 import {v4 as uuidv4} from 'uuid';
 import {KeyboardService} from '../../../core/services/keyboard.service';
@@ -6,8 +6,8 @@ import {takeWhile} from 'rxjs/operators';
 import {IKeypressEvent} from '../../interfaces/keypress-event';
 import {PopOverPositions} from '../../enums/pop-over-positions';
 import {OutlineStyle} from '../../enums/outline-style';
-import {timer} from 'rxjs';
 import {ESC_KEY, TAB_KEY} from '../../constants/keycodes';
+import {FocusableIds} from '../../enums/focusable-ids';
 
 @Component({
 	selector: 'app-pop-over',
@@ -21,6 +21,7 @@ export class PopOverComponent extends BaseComponent implements OnInit {
 
 	@Input() buttonOutlineStyle: OutlineStyle = OutlineStyle.White;
 	@Input() buttonAriaLabel: string;
+	@Input() focusableId: FocusableIds;
 	@Input() isExpanded = false;
 	@Input() showCloseButton = true;
 	@Input() popoverPosition: PopOverPositions = PopOverPositions.RightTop;
@@ -30,9 +31,16 @@ export class PopOverComponent extends BaseComponent implements OnInit {
 	@ContentChild('focusFirst') focusFirstElement: ElementRef;
 	@ContentChild('lastElement') lastElement: ElementRef;
 
+	@HostListener('document:click', ['$event']) onDocumentClick(event) {
+		if (this.active && this.isExpanded && !this.element.nativeElement.contains(event.target)) {
+			this.isExpanded = false;
+		}
+	}
+
 	constructor(
 		private keyboardService: KeyboardService,
 		private renderer: Renderer2,
+		private element: ElementRef,
 	) {
 		super();
 		this._id = 'popover-id:' + uuidv4();
