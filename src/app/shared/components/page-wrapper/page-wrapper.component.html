@@ -1,0 +1,9 @@
+<h1 [appFocusable]="headingId">
+<span [attr.aria-hidden]="!!screenReaderHeading">
+	{{heading}}
+</span>
+	<span *ngIf="!!screenReaderHeading" class="sr-only">
+	{{screenReaderHeading}}
+</span>
+</h1>
+<ng-content></ng-content>
