@@ -8,6 +8,13 @@
 		Because the Web Content Accessibility Guidelines (WCAG) can be interpreted in many different ways, please view this website as one interpretation. This is meant as an assistance and resource for web developers working on making their projects accesssible.
 	</p>
 	<div class="home__links">
-
+		<article class="block-link" *ngFor="let link of homeLinks; trackBy: trackByFn">
+			<h2>
+				<a [routerLink]="link.route">
+					{{link.heading}}
+				</a>
+			</h2>
+			<p>{{link.description}}</p>
+		</article>
 	</div>
 </app-page-wrapper>

@@ -27,21 +27,26 @@ p {
 	margin-bottom: 2em;
 }
 
+a {
+	color: var(--primary-color);
+
+	&:active,
+	&:hover {
+		color: var(--black);
+	}
+}
+
 a,
 button,
 input,
 select,
 textarea,
 [tabindex="0"] {
-	outline: var(--outline-width) solid transparent;
-	outline-offset: 0.75rem;
-	transition-property: var(--base-transition-properties);
-	transition-duration: var(--animation-timer);
-	transition-timing-function: ease-in-out;
+	@include focusDefault;
 
+	&:hover,
 	&:focus {
-		outline: var(--outline-width) solid var(--primary-color);
-		outline-offset: 0.1875rem;
+		@include focusActive;
 
 		&.outline__white {
 			outline: var(--outline-width) solid var(--white);
@@ -82,6 +87,22 @@ $ACCESSIBILITY
 	width: 0.0625rem !important;
 	white-space: nowrap !important;
 }
+
+.block-link {
+	@include focusDefault;
+	position: relative;
+
+	&:focus-within {
+		@include focusActive;
+	}
+
+	a[href]::after {
+		@include absolute-fill;
+		content: '';
+		display: block;
+	}
+}
+
 
 
 

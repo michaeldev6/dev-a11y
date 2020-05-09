@@ -1,0 +1,37 @@
+@import '../../../../../styles/mixins';
+
+.home__links {
+	@include flex(row wrap, flex-start, stretch);
+
+	@include MQ('sm') {
+		@include flex(column, flex-start, stretch);
+	}
+
+	article {
+		@include border-radius(var(--border-radius));
+		@include flex(column, flex-start, stretch);
+		background-color: var(--bright-grey);
+		padding: var(--content-padding);
+		margin: var(--primary-spacing);
+		width: 31%;
+
+		&:focus-within,
+		&:hover {
+			@include focusActive;
+
+			a {
+				text-decoration: underline;
+			}
+		}
+
+		a {
+			outline: 0 !important;
+			outline-color: transparent !important;
+			text-decoration: none;
+
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+}

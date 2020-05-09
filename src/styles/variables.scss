@@ -1,24 +1,41 @@
 :root {
-	--animation-timer: 200ms;
-	--base-transition-properties: outline, outline-offset;
-	--border-radius: 0.375rem;
+
+	// colors
 	--black: #333;
-	--button-padding: 0.625em 1em;
-	--container-width: 72rem;
-	--content-padding: var(--primary-spacing) var(--primary-spacing-double);
-	--margin-horizontal: 0 var(--primary-spacing);
-	--margin-vertical: var(--primary-spacing) 0;
-	--outline-width: 0.1875rem;
-	--padding-horizontal: 0 var(--primary-spacing);
-	--padding-vertical: var(--primary-spacing) 0;
+	--bright-grey: #efefef;
 	--primary-color: #60308D;
 	--primary-color-light: #fbe3ff;
 	--primary-color-dark: #250d53;
+	--white: #fff;
+
+
+	// spacing
+	--content-padding: var(--primary-spacing) var(--primary-spacing-double);
+
+	--margin-horizontal: 0 var(--primary-spacing);
+	--margin-vertical: var(--primary-spacing) 0;
+
+	--padding-horizontal: 0 var(--primary-spacing);
+	--padding-vertical: var(--primary-spacing) 0;
+
 	--primary-spacing: 0.5rem;
 	--primary-spacing-double: 1rem;
 	--primary-spacing-half: 0.25rem;
-	--white: #fff;
+
+
+	// element styles
+	--border-radius: 0.375rem;
+	--button-padding: 0.625em 1em;
+	--container-width: 72rem;
+	--outline-offset-blur: 0.75rem;
+	--outline-offset-focus: 0.1875rem;
+	--outline-width: 0.1875rem;
 	--min-dimensions: 2.75rem;
+
+
+	// animations
+	--animation-timer: 200ms;
+	--base-transition-properties: outline, outline-offset;
 }
 
 $layout-xl-size: 75rem; // 1200px

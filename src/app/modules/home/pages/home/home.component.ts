@@ -13,27 +13,27 @@ export class HomeComponent extends BasePageComponent implements OnInit {
 		{
 			route: '/wcag',
 			heading: 'WCAG Checklist',
-			subHeading: 'Look through the guidelines and get a quick understanding of what each one means. A filter is available to help you out.'
+			description: 'Look through the guidelines and get a quick understanding of what each one means. A filter is available to help you out.'
 		},
 		{
 			route: '/aria',
-			heading: 'ARIA Roles and Attributes',
-			subHeading: 'Read about all the various aria roles and attributes, what they are used for and how to use them in your website'
+			heading: 'ARIA',
+			description: 'Accessible Rich Internet Applications. Read about all the various aria roles and attributes, what they are used for and how to use them in your website'
 		},
 		{
 			route: '/code-samples',
-			heading: 'Code Samples for Common Website Components',
-			subHeading: 'Have a look at common feature and components on website and one way to impleete'
+			heading: 'Code Samples',
+			description: 'Have a look at common feature and components web applications utilize and how to make them accessible.'
 		},
 		{
-			route: '/aria',
-			heading: 'ARIA Roles and Attributes',
-			subHeading: 'Read about all the various aria roles and attributes, what they are used for and how to use them in your website'
+			route: '/screen-readers',
+			heading: 'Screen Readers',
+			description: 'Learn about the more popular screen readers and get an understanding of how they work.'
 		},
 		{
-			route: '/aria',
-			heading: 'ARIA Roles and Attributes',
-			subHeading: 'Read about all the various aria roles and attributes, what they are used for and how to use them in your website'
+			route: '/links-resources',
+			heading: 'Links and Resources',
+			description: 'Here are links to other resources to help in your understanding of web accessibility. Many were utilized in helping to build this website and make it as accessible as possible.'
 		},
 	];
 
