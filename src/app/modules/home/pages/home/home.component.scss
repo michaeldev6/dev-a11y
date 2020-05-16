@@ -15,6 +15,10 @@
 		margin: var(--primary-spacing);
 		width: 31%;
 
+		@include MQ('sm') {
+			width: 96%;
+		}
+
 		&:focus-within,
 		&:hover {
 			@include focusActive;
