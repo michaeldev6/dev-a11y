@@ -6,29 +6,29 @@ import {FocusableIds} from '../../shared/enums/focusable-ids';
 })
 export class FocusService {
 
-  private focusableElements: {[key: string]: ElementRef} = {};
+	private focusableElements: {[key: string]: ElementRef} = {};
 
-  constructor() { }
+	constructor() { }
 
-  focusOnElement(id: FocusableIds): void {
-    if (!!this.getFocusableElement(id)) {
-      this.getFocusableElement(id).nativeElement.focus();
-    }
-  }
+	focusOnElement(id: FocusableIds): void {
+		if (!!this.getFocusableElement(id)) {
+			this.getFocusableElement(id).nativeElement.focus();
+		}
+	}
 
-  getFocusableElement(id: FocusableIds): ElementRef | undefined {
-    return this.focusableElements[id];
-  }
+	getFocusableElement(id: FocusableIds): ElementRef | undefined {
+		return this.focusableElements[id];
+	}
 
-  registerFocusableElement(id: FocusableIds, el: ElementRef): void {
-    if (!this.getFocusableElement(id)) {
-      this.focusableElements[id] = el;
-    }
-  }
+	registerFocusableElement(id: FocusableIds, el: ElementRef): void {
+		if (!this.getFocusableElement(id)) {
+			this.focusableElements[id] = el;
+		}
+	}
 
-  unregisterFocusableElement(id: FocusableIds): void {
-    if (!!this.getFocusableElement(id)) {
-      delete this.focusableElements[id];
-    }
-  }
+	unregisterFocusableElement(id: FocusableIds): void {
+		if (!!this.getFocusableElement(id)) {
+			delete this.focusableElements[id];
+		}
+	}
 }

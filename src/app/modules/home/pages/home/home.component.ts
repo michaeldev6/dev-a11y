@@ -8,7 +8,6 @@ import {IHomeLink} from '../../../../shared/interfaces/home-link';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends BasePageComponent implements OnInit {
-
 	readonly homeLinks: IHomeLink[] = [
 		{
 			route: '/wcag',
@@ -18,7 +17,7 @@ export class HomeComponent extends BasePageComponent implements OnInit {
 		{
 			route: '/aria',
 			heading: 'ARIA',
-			description: 'Accessible Rich Internet Applications. Read about all the various aria roles and attributes, what they are used for and how to use them in your website'
+			description: 'Accessible Rich Internet Applications. Read about all the various aria roles and attributes, what they are used for and how to use them in your website.'
 		},
 		{
 			route: '/code-samples',
@@ -36,9 +35,4 @@ export class HomeComponent extends BasePageComponent implements OnInit {
 			description: 'Here are links to other resources to help in your understanding of web accessibility. Many were utilized in helping to build this website and make it as accessible as possible.'
 		},
 	];
-
-	ngOnInit(): void {
-		super.ngOnInit();
-	}
-
 }
