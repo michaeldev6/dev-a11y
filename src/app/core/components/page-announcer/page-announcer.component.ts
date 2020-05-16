@@ -53,7 +53,7 @@ export class PageAnnouncerComponent extends BaseComponent implements OnInit{
 			this.numberOfRepeats++;
 			const periods = '.' + Array(this.numberOfRepeats).join('.');
 			// adding more periods at the end of the text will cause the screen reader to read out the text again,
-			// without reading the periods out
+			// without reading the periods out (Voice Over/Chrome at least)
 			this.announcement = `${text}${periods}`;
 		} else {
 			this.announcement = this.originalAnnouncement = text;
