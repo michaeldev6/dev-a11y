@@ -44,7 +44,7 @@ Accessibility means the user can access any data and features on a website using
 
 Run `npm start` for a local instance of the application. Can be found at to `http://localhost:4200/`.
 
-Run `npm start:ngrok` to create a public url to test on other devices, like mobile or a different OS.
+Run `npm start:ngrok` to create a public url to test on other devices, like mobile or a different OS. Must have local host running in a separate terminal.
 
 ## Angular Version
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
