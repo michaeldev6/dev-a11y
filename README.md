@@ -16,6 +16,18 @@ Accessibility means the user can access any data and features on a website using
 - Keep color contrast in mind if there is a need to introduce more colors.
 - Always check for responsiveness.
 
+## Workflow Process
+- Create a branch off of the `develop` branch locally to work on the task/issue.
+- Suggested branch naming formats:
+    - `###-type-description`
+    - `123-fix-issue-with-this`
+    - `567-feature-new-component`
+- Complete the task locally. Do as many commits as needed.
+- Before pushing up, do a `git rebase develop` to stack your changes on top of develop.
+- Push up branch to origin. `git push origin name-of-my-branch`. 
+- Create a PR, merging your newly pushed branch into `develop`.
+- Merging will `squash` and commit to `develop` 
+
 ## General Folder Structure (/app)
 - /core
     - /components `(components used in the main framework of website)`
