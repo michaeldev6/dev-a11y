@@ -3,7 +3,7 @@
 footer {
 	@include flex(column, flex-start, stretch);
 
-	.footer_content {
+	.footer__content {
 		@include flex(row, space-between, center);
 		background-color: var(--primary-color);
 		color: var(--white);

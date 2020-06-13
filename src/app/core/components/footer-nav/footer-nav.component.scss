@@ -3,7 +3,7 @@
 
 :host {
 	@include flex(row, center, center);
-	padding: var(--primary-spacing) var(--primary-spacing);
+	padding: var(--primary-spacing);
 	border-top: 0.0625rem dashed var(--primary-color);
 
 	.footer-nav__container {
