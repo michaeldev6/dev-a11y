@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {BaseComponent} from '../base/base.component';
 import {IRouteItem} from '../../../shared/interfaces/route-item';
 import {MAIN_NAV} from '../../../shared/constants/main-nav';
-import {filter, takeWhile} from 'rxjs/operators';
-import {NavigationEnd, Router} from '@angular/router';
+import {takeWhile} from 'rxjs/operators';
+import {RoutingService} from '../../services/routing.service';
 
 @Component({
   selector: 'app-footer-nav',
@@ -16,7 +16,7 @@ export class FooterNavComponent extends BaseComponent implements OnInit {
 
 	currentRoute = '';
 
-  	constructor(private router: Router) {
+  	constructor(private routingService: RoutingService) {
 		super();
 	}
 
@@ -26,13 +26,10 @@ export class FooterNavComponent extends BaseComponent implements OnInit {
 	}
 
 	getRoute(): void {
-		this.router.events
-			.pipe(
-				filter(event => event instanceof NavigationEnd),
-				takeWhile(() => this.active),
-			)
-			.subscribe((event: NavigationEnd) => {
-				this.currentRoute = event.url;
+		this.routingService.getCurrentRoute()
+			.pipe(takeWhile(() => this.active))
+			.subscribe((route: string) => {
+				this.currentRoute = route;
 			});
 	}
 }

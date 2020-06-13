@@ -2,12 +2,12 @@ import {Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from 
 import {BaseComponent} from '../base/base.component';
 import {FocusableIds} from '../../../shared/enums/focusable-ids';
 import {KeyboardService} from '../../services/keyboard.service';
-import {filter, takeWhile} from 'rxjs/operators';
+import {takeWhile} from 'rxjs/operators';
 import {IRouteItem} from '../../../shared/interfaces/route-item';
-import {NavigationEnd, Router} from '@angular/router';
 import {PopOverPositions} from '../../../shared/enums/pop-over-positions';
 import {PopOverComponent} from '../../../shared/components/pop-over/pop-over.component';
 import {MAIN_NAV} from '../../../shared/constants/main-nav';
+import {RoutingService} from '../../services/routing.service';
 
 @Component({
 	selector: 'app-header',
@@ -27,7 +27,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
 	constructor(
 		private keyboardService: KeyboardService,
-		private router: Router
+		private routingService: RoutingService
 	) {
 		super();
 	}
@@ -38,13 +38,10 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 	}
 
 	getRoute(): void {
-		this.router.events
-			.pipe(
-				filter(event => event instanceof NavigationEnd),
-				takeWhile(() => this.active),
-			)
-			.subscribe((event: NavigationEnd) => {
-				this.currentRoute = event.url;
+		this.routingService.getCurrentRoute()
+			.pipe(takeWhile(() => this.active)	)
+			.subscribe((route: string) => {
+				this.currentRoute = route;
 			});
 	}
 
