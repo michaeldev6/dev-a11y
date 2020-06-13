@@ -1,0 +1,9 @@
+<nav class="footer-nav__container">
+	<a
+		*ngFor="let link of routeItems; trackBy: trackByFn"
+		[routerLink]="link.route"
+		[class.active]="currentRoute === link.route">
+		{{link.text}}
+		<span *ngIf="currentRoute === link.route" class="sr-only">(current page)</span>
+	</a>
+</nav>

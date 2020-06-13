@@ -24,7 +24,7 @@
 							*ngIf="i === 0"
 							(click)="onLinkClick(link.route)"
 							[routerLink]="link.route"
-							[ngClass]="{'active': currentRoute === link.route}">
+							[class.active]="currentRoute === link.route">
 							{{link.text}}
 							<span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
 							<span *ngIf="currentRoute === link.route" class="sr-only">(current page)</span>
@@ -33,7 +33,7 @@
 							*ngIf="i > 0 && i < routeItems.length - 1"
 							(click)="onLinkClick(link.route)"
 							[routerLink]="link.route"
-							[ngClass]="{'active': currentRoute === link.route}">
+							[class.active]="currentRoute === link.route">
 							{{link.text}}
 							<span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
 							<span *ngIf="currentRoute === link.route" class="sr-only">(current page)</span>
@@ -43,7 +43,7 @@
 							*ngIf="i === routeItems.length - 1"
 							(click)="onLinkClick(link.route)"
 							[routerLink]="link.route"
-							[ngClass]="{'active': currentRoute === link.route}">
+							[class.active]="currentRoute === link.route">
 							{{link.text}}
 							<span *ngIf="currentRoute === link.route" aria-hidden="true">&#x2B05;</span>
 							<span *ngIf="currentRoute === link.route" class="sr-only">(current page)</span>

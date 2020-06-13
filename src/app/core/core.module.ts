@@ -9,6 +9,7 @@ import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
 import { BasePageComponent } from './components/base-page/base-page.component';
 import { FontSizerComponent } from './components/font-sizer/font-sizer.component';
+import { FooterNavComponent } from './components/footer-nav/footer-nav.component';
 
 
 const COMPONENTS = [
@@ -24,14 +25,16 @@ const COMPONENTS = [
 @NgModule({
   declarations: [
     ...COMPONENTS,
+    FooterNavComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule
   ],
-  exports: [
-    ...COMPONENTS
-  ]
+	exports: [
+		...COMPONENTS,
+		FooterNavComponent
+	]
 })
 export class CoreModule { }

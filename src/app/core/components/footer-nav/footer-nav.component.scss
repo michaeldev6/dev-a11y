@@ -1,0 +1,29 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+:host {
+	@include flex(row, center, center);
+	padding: var(--primary-spacing);
+	border-top: 0.0625rem dashed var(--primary-color);
+
+	.footer-nav__container {
+		@include flex(row, center, center);
+
+		a {
+			border-bottom: 0.1875rem solid transparent;
+			display: block;
+			margin: 0 var(--primary-spacing);
+			padding: var(--primary-spacing);
+			text-decoration: none;
+
+			&:focus,
+			&:hover {
+				text-decoration: underline;
+			}
+
+			&.active {
+				border-bottom: 0.1875rem solid var(--primary-color);
+			}
+		}
+	}
+}

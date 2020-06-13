@@ -2,16 +2,17 @@
 @import '../../../../styles/mixins';
 
 :host {
-  @include flex(row, center, center);
-  position: fixed;
-  top: 0.5rem;
-  width: 100%;
+	@include flex(row, center, center);
+	position: fixed;
+	top: 0.5rem;
+	width: 100%;
+	z-index: 100000000;
 }
 
 button {
-  transition: none !important;
-  &.skip-link {
-     @include hidden-focusable-button;
-    font-size: 0.75rem;
-  }
+	transition: none !important;
+	&.skip-link {
+		 @include hidden-focusable-button;
+		font-size: 0.75rem;
+	}
 }
