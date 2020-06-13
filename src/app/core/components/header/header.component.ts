@@ -7,6 +7,7 @@ import {IRouteItem} from '../../../shared/interfaces/route-item';
 import {NavigationEnd, Router} from '@angular/router';
 import {PopOverPositions} from '../../../shared/enums/pop-over-positions';
 import {PopOverComponent} from '../../../shared/components/pop-over/pop-over.component';
+import {MAIN_NAV} from '../../../shared/constants/main-nav';
 
 @Component({
 	selector: 'app-header',
@@ -15,32 +16,7 @@ import {PopOverComponent} from '../../../shared/components/pop-over/pop-over.com
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
 
-	routeItems: IRouteItem[] = [
-		{
-			text: 'WCAG Checklist',
-			route: '/wcag',
-		},
-		{
-			text: 'ARIA',
-			route: '/aria',
-		},
-		{
-			text: 'Code Samples',
-			route: '/code-samples',
-		},
-		{
-			text: 'Screen Readers',
-			route: '/screen-readers',
-		},
-		{
-			text: 'Links and Resources',
-			route: '/links-resources',
-		},
-		{
-			text: 'Main Page',
-			route: '/',
-		}
-	];
+	routeItems: IRouteItem[] = MAIN_NAV;
 
 	menuPosition: PopOverPositions = PopOverPositions.BottomRight;
 	currentRoute = '';
