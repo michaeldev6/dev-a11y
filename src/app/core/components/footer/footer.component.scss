@@ -1,23 +1,27 @@
 @import '../../../../styles/mixins';
 
 footer {
-  @include flex(row, space-between, center);
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: var(--content-padding);
+	@include flex(column, flex-start, stretch);
 
-  .info {
-    .author {
-      font-size: 0.875rem;
-    }
+	.footer_content {
+		@include flex(row, space-between, center);
+		background-color: var(--primary-color);
+		color: var(--white);
+		padding: var(--content-padding);
 
-    .website {
-      font-size: 0.75rem;
+		.info {
+			.author {
+				font-size: 0.875rem;
+			}
 
-      a {
-        color: var(--white);
-      }
-    }
-  }
+			.website {
+				font-size: 0.75rem;
+
+				a {
+					color: var(--white);
+				}
+			}
+		}
+	}
 }
 
