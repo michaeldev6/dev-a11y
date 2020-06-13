@@ -32,8 +32,9 @@ const COMPONENTS = [
     RouterModule,
     SharedModule
   ],
-  exports: [
-    ...COMPONENTS
-  ]
+	exports: [
+		...COMPONENTS,
+		FooterNavComponent
+	]
 })
 export class CoreModule { }
