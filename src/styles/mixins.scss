@@ -37,7 +37,7 @@
 @mixin focusDefault() {
 	outline: var(--outline-width) solid transparent;
 	outline-offset: var(--outline-offset-blur);
-	transition-property: var(--base-transition-properties);
+	transition-property: var(--base-outline-transition-properties);
 	transition-duration: var(--animation-timer);
 	transition-timing-function: ease-in-out;
 }

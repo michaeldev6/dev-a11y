@@ -114,7 +114,7 @@ $BUTTON STYLES
 button {
 	&.primary,
 	&.secondary {
-		transition-property: var(--base-transition-properties), background-color;
+		transition-property: var(--base-outline-transition-properties), background-color;
 		font-size: 0.875rem;
 	}
 

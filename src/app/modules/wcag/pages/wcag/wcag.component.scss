@@ -1,0 +1,11 @@
+@import '../../../../../styles/mixins';
+@import '../../../../../styles/variables';
+
+.wcag__container {
+	@include flex(row, flex-start, stretch);
+
+	app-wcag-list-filter {
+		min-width: 18.75rem;
+	}
+
+}

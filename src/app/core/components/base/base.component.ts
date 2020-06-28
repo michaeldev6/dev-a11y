@@ -6,19 +6,24 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: []
 })
 export class BaseComponent implements OnInit, OnDestroy {
-  active = false;
 
-  constructor() {}
+	private static id = 0;
+	cid = 0;
+  	active = false;
 
-  ngOnInit() {
-    this.active = true;
-  }
+	constructor() {}
 
-  ngOnDestroy(): void {
-    this.active = false;
-  }
+	ngOnInit() {
+		BaseComponent.id++;
+		this.cid = BaseComponent.id;
+		this.active = true;
+	}
 
-  trackByFn(index, item) {
-    return index;
-  }
+	ngOnDestroy(): void {
+		this.active = false;
+	}
+
+	trackByFn(index, item) {
+		return index;
+	}
 }

@@ -7,5 +7,5 @@ import {BasePageComponent} from '../../../../core/components/base-page/base-page
   styleUrls: ['./wcag.component.scss']
 })
 export class WcagComponent extends BasePageComponent {
-  pageTitle = 'WCAG 2.1 Checklist';
+  pageTitle = 'WCAG Checklist';
 }
