@@ -2,7 +2,7 @@
 @import "mixins";
 
 /*=============================
-$DEFAULT STYLES
+	$DEFAULT STYLES
 =============================*/
 
 html, body {
@@ -41,6 +41,7 @@ button,
 input,
 select,
 textarea,
+summary,
 [tabindex="0"] {
 	@include focusDefault;
 
@@ -73,7 +74,7 @@ button {
 
 
 /*=============================
-$ACCESSIBILITY
+	$ACCESSIBILITY
 =============================*/
 .sr-only {
 	border: 0 !important;
@@ -109,7 +110,7 @@ $ACCESSIBILITY
 
 
 /*=============================
-$BUTTON STYLES
+	$BUTTON STYLES
 =============================*/
 button {
 	&.primary,
@@ -138,4 +139,31 @@ button {
 			background-color: var(--primary-color-light);
 		}
 	}
+}
+
+
+
+
+
+
+
+
+
+/*=============================
+	$GENERAL ELEMENTS
+=============================*/
+hr {
+	border: 0;
+	border-top: 0.125rem solid var(--primary-color);
+	margin: var(--primary-spacing) 0;
+}
+
+details {
+	summary {
+		cursor: pointer;
+	}
+}
+
+ul {
+	margin: 0;
 }

@@ -1,2 +1,9 @@
 @import '../../../../../styles/mixins';
 @import '../../../../../styles/variables';
+
+.wcag-filter__container {
+	@include flex(column, flex-start, stretch);
+}
+app-a11y-input {
+	margin-bottom: 1rem;
+}
