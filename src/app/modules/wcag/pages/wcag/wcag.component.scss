@@ -4,8 +4,15 @@
 .wcag__container {
 	@include flex(row, flex-start, stretch);
 
-	app-wcag-list-filter {
+	.wcag__filter {
+		border-right: 0.0625rem solid var(--primary-color-dark);
+		padding-right: var(--primary-spacing-double);
+		padding-bottom: var(--primary-spacing-double);
+		margin-right: var(--primary-spacing-double);
 		min-width: 15rem;
-	}
 
+		app-wcag-list-filter {
+			width: 100%;
+		}
+	}
 }

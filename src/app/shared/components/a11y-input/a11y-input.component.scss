@@ -43,8 +43,9 @@ $clear-button-size: 1.5rem;
 		@include flex(row, flex-start, center);
 
 		input {
-			flex-grow: 1;
+			background-color: transparent;
 			border: 0;
+			flex-grow: 1;
 			padding: var(--primary-spacing) var(--primary-spacing-half) 0;
 			outline: none;
 		}
