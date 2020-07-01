@@ -4,6 +4,7 @@ import { WcagComponent } from './pages/wcag/wcag.component';
 import {WcagRoutingModule} from './wcag-routing.module';
 import {SharedModule} from '../../shared/shared.module';
 import { WcagListFilterComponent } from './components/wcag-list-filter/wcag-list-filter.component';
+import { WcagListComponent } from './components/wcag-list/wcag-list.component';
 
 
 
@@ -11,6 +12,7 @@ import { WcagListFilterComponent } from './components/wcag-list-filter/wcag-list
 	declarations: [
 		WcagComponent,
 		WcagListFilterComponent,
+		WcagListComponent,
 	],
 	imports: [
 		WcagRoutingModule,
