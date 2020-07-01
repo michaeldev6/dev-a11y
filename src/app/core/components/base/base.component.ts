@@ -9,9 +9,7 @@ export class BaseComponent implements OnInit, OnDestroy {
 
 	private static id = 0;
 	cid = 0;
-  	active = false;
-
-	constructor() {}
+	active = false;
 
 	ngOnInit() {
 		BaseComponent.id++;
