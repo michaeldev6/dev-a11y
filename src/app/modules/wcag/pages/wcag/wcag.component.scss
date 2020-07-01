@@ -1,0 +1,29 @@
+@import '../../../../../styles/mixins';
+@import '../../../../../styles/variables';
+
+.wcag__container {
+	@include flex(row, flex-start, stretch);
+
+	.wcag__filter {
+		border-right: 0.1875rem solid var(--bright-grey);
+		margin-right: var(--primary-spacing-double);
+		min-width: 15rem;
+		padding-right: var(--primary-spacing-double);
+		padding-bottom: var(--primary-spacing-double);
+
+		app-wcag-list-filter {
+			width: 100%;
+
+			::ng-deep {
+				.wcag-filter__container {
+					position: sticky;
+					top: 5.75rem;
+				}
+			}
+		}
+	}
+
+	.wcag__list {
+		width: 100%;
+	}
+}

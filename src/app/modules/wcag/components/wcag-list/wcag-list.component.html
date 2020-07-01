@@ -1,0 +1,22 @@
+<div class="wcag-list__heading">
+	<div class="wcag-list__numbers">
+		Showing {{displayedWcagItems.length}} of {{wcagItems.length}}
+	</div>
+</div>
+
+<div class="wcag-list__container">
+	<div
+		*ngFor="let item of displayedWcagItems; trackBy: trackByFn"
+		class="wcag-list__item"
+	>
+		<a [routerLink]="'/wcag/' + item.id" class="wcag-list__item__heading">
+			{{item.id}} - {{item.name}}
+		</a>
+		<div class="wcag-list__item__level">
+			Level {{item.level}}
+		</div>
+		<div class="wcag-list__item__description">
+			{{item.description}}
+		</div>
+	</div>
+</div>

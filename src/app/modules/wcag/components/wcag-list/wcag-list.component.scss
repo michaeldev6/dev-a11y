@@ -1,0 +1,41 @@
+@import '../../../../../styles/mixins';
+@import '../../../../../styles/variables';
+
+.wcag-list__heading {
+	@include flex(row, space-between, center);
+	background-color: var(--white);
+	padding-bottom: var(--primary-spacing);
+	margin-bottom: var(--primary-spacing);
+
+	@include MQ('sm') {
+		@include flex(column, flex-start, stretch);
+	}
+
+	h2 {
+		margin: 0;
+	}
+}
+
+.wcag-list__container {
+	@include flex(column, flex-start, stretch);
+
+	.wcag-list__item {
+		border-bottom: 0.0625rem dashed var(--grey);
+		padding-bottom: var(--primary-spacing-double);
+		margin-bottom: var(--primary-spacing-double);
+
+		.wcag-list__item__heading {
+			font-size: 1.125rem;
+			font-weight: 600;
+		}
+
+		.wcag-list__item__level {
+			font-size: 0.875rem;
+			font-style: italic;
+		}
+
+		.wcag-list__item__description {
+			font-size: 0.875rem;
+		}
+	}
+}

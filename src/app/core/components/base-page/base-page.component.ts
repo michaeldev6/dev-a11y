@@ -9,7 +9,18 @@ import {WindowUtil} from '../../../shared/utils/window.util';
 	styleUrls: []
 })
 export class BasePageComponent extends BaseComponent implements OnInit {
-	pageTitle = '';
+	private _pageTitle = '';
+
+	set pageTitle(title: string) {
+		if (!!title && title.length > 0) {
+			this._pageTitle = title;
+			this.pageTitleService.updatePageTitle(this._pageTitle, !!this._pageTitle);
+		}
+	}
+
+	get pageTitle(): string {
+		return this._pageTitle;
+	}
 
 	constructor(
 		protected pageTitleService: PageTitleService,
@@ -19,7 +30,6 @@ export class BasePageComponent extends BaseComponent implements OnInit {
 
 	ngOnInit() {
 		super.ngOnInit();
-		this.pageTitleService.updatePageTitle(this.pageTitle, !!this.pageTitle);
 		WindowUtil.focusOnBody();
 	}
 }

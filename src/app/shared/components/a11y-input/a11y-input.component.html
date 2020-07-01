@@ -1,0 +1,37 @@
+<div class="a11y-input__container">
+	<label
+		aria-hidden="true"
+		[for]="'a11y-input_' + cid"
+		[class.a11y-input__label-stick]="hasContent()"
+	>
+		{{ filterLabel }}
+	</label>
+	<div class="a11y-input__elements">
+		<input
+			#inputFilter
+			type="text"
+			(input)="onInputChanged($event)"
+			[id]="'a11y-input_' + cid"
+			[attr.aria-describedby]="generateDescribedByIds()"
+		/>
+		<button
+			*ngIf="useCloseButton && hasContent()"
+			class="a11y-input__clear"
+			[attr.aria-label]="'clear ' + filterLabel"
+			(click)="clearFilter()"
+		>
+			<i class="fa fa-times"></i>
+		</button>
+		<div class="a11y-input__post-content">
+			<ng-content select="[post-content]"></ng-content>
+		</div>
+	</div>
+</div>
+<div
+	*ngIf="!!describedByText && showDescribedByText"
+	aria-hidden="true"
+	class="a11y-input__describedBy"
+	[id]="'a11y-input_describedby_' + cid"
+>
+	{{ describedByText }}
+</div>

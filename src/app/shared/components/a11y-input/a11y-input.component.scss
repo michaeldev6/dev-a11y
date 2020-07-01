@@ -1,0 +1,80 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+@mixin label-sticky() {
+	top: -0.375rem;
+	transform: scale(0.75, 0.75) translateX(-15%);
+}
+
+$clear-button-size: 1.5rem;
+
+.a11y-input__container {
+	@include flex(column, flex-start, stretch);
+	@include focusDefault;
+	border-bottom: 0.125rem solid var(--primary-color);
+	padding: var(--primary-spacing-half);
+	position: relative;
+	width: 100%;
+
+	label {
+		max-width: 90%;
+		overflow: hidden;
+		pointer-events: none;
+		position: absolute;
+		text-overflow: ellipsis;
+		top: var(--primary-spacing);
+		transition: all var(--animation-timer) ease-in-out;
+		white-space: nowrap;
+
+		&.a11y-input__label-stick {
+			@include label-sticky;
+		}
+	}
+
+	&:focus-within {
+		@include focusActive;
+
+		label {
+			@include label-sticky;
+		}
+	}
+
+	.a11y-input__elements {
+		@include flex(row, flex-start, center);
+
+		input {
+			background-color: transparent;
+			border: 0;
+			flex-grow: 1;
+			padding: var(--primary-spacing) var(--primary-spacing-half) 0;
+			outline: none;
+		}
+
+		button.a11y-input__clear {
+			@include border-radius(50%);
+			background-color: transparent;
+			color: var(--black);
+			font-size: 0.75rem;
+			margin:0 var(--primary-spacing-half);
+			width: $clear-button-size;
+			height: $clear-button-size;
+
+			outline: none;
+
+			&:focus,
+			&:hover {
+				background-color: var(--primary-color);
+				color: var(--white);
+			}
+		}
+	}
+}
+
+.a11y-input__describedBy {
+	font-size: 0.75rem;
+	margin-top: var(--primary-spacing-half);
+	padding-left: var(--primary-spacing-half);
+}
+
+
+

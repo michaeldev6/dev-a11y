@@ -1,0 +1,34 @@
+<div class="wcag-filter__container">
+	<app-a11y-input
+		filterLabel="Filter WCAG Items"
+		[useCloseButton]="true"
+	>
+		<i class="fa fa-filter" post-content></i>
+	</app-a11y-input>
+
+	<label>
+		Display options
+	</label>
+	<select>
+		<option>In order by WCAG ID</option>
+		<option>Grouped by Level</option>
+	</select>
+	<hr />
+
+	<details>
+		<summary>WCAG Level</summary>
+		<ul>
+			<li>[Checkbox] A</li>
+			<li>[Checkbox] AA</li>
+			<li>[Checkbox] AAA</li>
+		</ul>
+	</details>
+	<hr />
+	<details>
+		<summary>Tags</summary>
+		<ul>
+			<li>Visual</li>
+			<li>Text</li>
+		</ul>
+	</details>
+</div>

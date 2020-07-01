@@ -1,1 +1,10 @@
-<p>wcag works!</p>
+<app-page-wrapper heading="WCAG Checklist">
+	<div class="wcag__container">
+		<section aria-label="WCAG Filter Options" class="wcag__filter">
+			<app-wcag-list-filter></app-wcag-list-filter>
+		</section>
+		<section aria-label="WCAG Guidelines" class="wcag__list">
+			<app-wcag-list></app-wcag-list>
+		</section>
+	</div>
+</app-page-wrapper>
