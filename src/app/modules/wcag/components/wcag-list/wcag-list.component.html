@@ -9,9 +9,9 @@
 		*ngFor="let item of displayedWcagItems; trackBy: trackByFn"
 		class="wcag-list__item"
 	>
-		<div class="wcag-list__item__heading">
+		<a [routerLink]="'/wcag/' + item.id" class="wcag-list__item__heading">
 			{{item.id}} - {{item.name}}
-		</div>
+		</a>
 		<div class="wcag-list__item__level">
 			Level {{item.level}}
 		</div>

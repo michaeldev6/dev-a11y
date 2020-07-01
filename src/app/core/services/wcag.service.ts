@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {WCAGGuidelines} from '../../shared/constants/wcag/guidelines/wcag-guidelines';
 import {IWCAGItem} from '../../shared/interfaces/wcag-item';
 import {WCAGLevel} from '../../shared/enums/wcag-levels';
+import {WCAGIds} from '../../shared/enums/wcag-ids';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class WcagService {
 
   getAllWCAGItems(): IWCAGItem[] {
     return this.wcagIds.map((id: string) => WCAGGuidelines[id]);
+  }
+
+  getWcagItem(id: WCAGIds): IWCAGItem {
+  	return WCAGGuidelines[id];
   }
 
   getWCAGLevelAItems(): IWCAGItem[] {
