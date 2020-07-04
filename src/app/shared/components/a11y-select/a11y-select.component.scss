@@ -1,2 +1,10 @@
 @import '../../../../styles/mixins';
 @import '../../../../styles/variables';
+
+
+.select__container {
+
+	select {
+		cursor: pointer;
+	}
+}

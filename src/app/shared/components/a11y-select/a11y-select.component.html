@@ -1,6 +1,38 @@
-<label>
-	a
-</label>
-<select>
-	<option>Placeholder</option>
-</select>
+<div class="select__container">
+	<label
+		class="select__label"
+		[id]="'a11y-select-label_' + cid"
+		[for]="'a11y-select_' + cid"
+	>
+		{{ label }}
+	</label>
+	<div class="select__wrapper">
+		<div class="select_selected-option">
+
+		</div>
+		<select
+			[id]="'a11y-select_' + cid"
+			[attr.aria-labelledby]="'a11y-select-label_' + cid"
+			(change)="onSelectChanged($event.target)"
+		>
+			<ng-container *ngFor="let option of options; trackBy: trackByFn">
+				<option
+					*ngIf="!isOptionGroup(option)"
+					[value]="option.value">
+					{{ option.label }}
+				</option>
+				<optgroup
+					*ngIf="isOptionGroup(option)"
+					[label]="option.label"
+				>
+					<option
+						*ngFor="let groupOption of option.options"
+						[value]="groupOption.value">
+						{{ groupOption.value }}
+					</option>
+				</optgroup>
+			</ng-container>
+		</select>
+	</div>
+</div>
+
