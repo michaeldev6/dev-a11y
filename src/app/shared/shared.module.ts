@@ -32,6 +32,7 @@ const COMPONENTS = [
 	exports: [
 		...DIRECTIVES,
 		...COMPONENTS,
+		A11ySelectComponent,
 	]
 })
 export class SharedModule { }
