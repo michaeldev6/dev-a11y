@@ -4,7 +4,32 @@
 
 .select__container {
 
-	select {
-		cursor: pointer;
+	.select__label {
+		font-size: 0.75rem;
+	}
+
+	.select__wrapper {
+		position: relative;
+
+		.select__selected-option {
+			@include flex(row, space-between, center);
+			background-color: var(--white);
+			border-bottom: var(--default-color-border);
+			padding: var(--primary-spacing-half) 0;
+			pointer-events: none;
+			position: relative;
+			z-index: 1;
+
+			.select_selected-option__down-arrow {
+				font-size: 0.75rem;
+			}
+		}
+
+		select {
+			@include absolute-fill;
+			cursor: pointer;
+			width:100%;
+			z-index: 0;
+		}
 	}
 }

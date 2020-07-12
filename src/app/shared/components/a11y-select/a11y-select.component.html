@@ -7,9 +7,6 @@
 		{{ label }}
 	</label>
 	<div class="select__wrapper">
-		<div class="select_selected-option">
-
-		</div>
 		<select
 			[id]="'a11y-select_' + cid"
 			[attr.aria-labelledby]="'a11y-select-label_' + cid"
@@ -18,7 +15,9 @@
 			<ng-container *ngFor="let option of options; trackBy: trackByFn">
 				<option
 					*ngIf="!isOptionGroup(option)"
-					[value]="option.value">
+					[value]="option.value"
+					[selected]="!!selectedOption && selectedOption.value == option.value"
+				>
 					{{ option.label }}
 				</option>
 				<optgroup
@@ -27,12 +26,18 @@
 				>
 					<option
 						*ngFor="let groupOption of option.options"
-						[value]="groupOption.value">
+						[value]="groupOption.value"
+						[selected]="!!selectedOption && selectedOption.value == groupOption.value"
+					>
 						{{ groupOption.value }}
 					</option>
 				</optgroup>
 			</ng-container>
 		</select>
+		<div class="select__selected-option" aria-hidden="true">
+			<span class="select_selected-option__label">{{ selectedOption?.label }}</span>
+			<span class="select_selected-option__down-arrow">▼</span>
+		</div>
 	</div>
 </div>
 

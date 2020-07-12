@@ -154,7 +154,7 @@ button {
 =============================*/
 hr {
 	border: 0;
-	border-top: 0.125rem solid var(--primary-color);
+	border-top: var(--default-color-border);
 	margin: var(--primary-spacing) 0;
 }
 

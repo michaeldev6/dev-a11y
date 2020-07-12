@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {BaseComponent} from '../../../core/components/base/base.component';
 import {ISelectOption, ISelectOptionGroup, ISelectOptions} from '../../interfaces/a11y-select';
 
@@ -22,6 +22,7 @@ export class A11ySelectComponent extends BaseComponent {
 		if (!!value && value.length > 0) {
 			this._options = value;
 			this.generateMappedOptions();
+			this.setDefaultSelected();
 		}
 	}
 	get options(): ISelectOptions {
@@ -76,5 +77,16 @@ export class A11ySelectComponent extends BaseComponent {
 		const value: string = (element as HTMLSelectElement).value;
 		this.selectedOption = this._mappedOptions[value];
 		console.log(this.selectedOption);
+	}
+
+	setDefaultSelected(): void {
+		if (!this.selectedOption) {
+			const firstOption: ISelectOption | ISelectOptionGroup = this._options[0];
+			if (this.isOptionGroup(firstOption)) {
+				this.selectedOption = (firstOption as ISelectOptionGroup).options[0];
+			} else {
+				this.selectedOption = firstOption as ISelectOption;
+			}
+		}
 	}
 }
