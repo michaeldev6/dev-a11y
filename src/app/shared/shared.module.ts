@@ -25,7 +25,6 @@ const COMPONENTS = [
 	declarations: [
 		...DIRECTIVES,
 		...COMPONENTS,
-
 	],
 	imports: [
 		CommonModule
