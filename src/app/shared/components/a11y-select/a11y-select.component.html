@@ -1,0 +1,43 @@
+<div class="select__container">
+	<label
+		class="select__label"
+		[id]="'a11y-select-label_' + cid"
+		[for]="'a11y-select_' + cid"
+	>
+		{{ label }}
+	</label>
+	<div class="select__wrapper">
+		<select
+			[id]="'a11y-select_' + cid"
+			[attr.aria-labelledby]="'a11y-select-label_' + cid"
+			(change)="onSelectChanged($event.target)"
+		>
+			<ng-container *ngFor="let option of options; trackBy: trackByFn">
+				<option
+					*ngIf="!isOptionGroup(option)"
+					[value]="option.value"
+					[selected]="!!selectedOption && selectedOption.value == option.value"
+				>
+					{{ option.label }}
+				</option>
+				<optgroup
+					*ngIf="isOptionGroup(option)"
+					[label]="option.label"
+				>
+					<option
+						*ngFor="let groupOption of option.options"
+						[value]="groupOption.value"
+						[selected]="!!selectedOption && selectedOption.value == groupOption.value"
+					>
+						{{ groupOption.value }}
+					</option>
+				</optgroup>
+			</ng-container>
+		</select>
+		<div class="select__selected-option" aria-hidden="true">
+			<span class="select_selected-option__label">{{ selectedOption?.label }}</span>
+			<span class="select_selected-option__down-arrow">▼</span>
+		</div>
+	</div>
+</div>
+

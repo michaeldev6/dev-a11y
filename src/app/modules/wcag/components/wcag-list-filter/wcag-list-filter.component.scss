@@ -3,7 +3,10 @@
 
 .wcag-filter__container {
 	@include flex(column, flex-start, stretch);
+	min-width: 15rem;
 }
-app-a11y-input {
+
+app-a11y-input,
+app-a11y-select {
 	margin-bottom: 1rem;
 }

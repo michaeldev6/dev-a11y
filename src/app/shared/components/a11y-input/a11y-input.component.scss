@@ -11,7 +11,7 @@ $clear-button-size: 1.5rem;
 .a11y-input__container {
 	@include flex(column, flex-start, stretch);
 	@include focusDefault;
-	border-bottom: 0.125rem solid var(--primary-color);
+	border-bottom: var(--default-color-border);
 	padding: var(--primary-spacing-half);
 	position: relative;
 	width: 100%;
@@ -46,6 +46,7 @@ $clear-button-size: 1.5rem;
 			background-color: transparent;
 			border: 0;
 			flex-grow: 1;
+			font-size: 1rem;
 			padding: var(--primary-spacing) var(--primary-spacing-half) 0;
 			outline: none;
 		}

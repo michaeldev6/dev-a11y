@@ -6,14 +6,10 @@
 		<i class="fa fa-filter" post-content></i>
 	</app-a11y-input>
 
-	<label>
-		Display options
-	</label>
-	<select>
-		<option>In order by WCAG ID</option>
-		<option>Grouped by Level</option>
-	</select>
-	<hr />
+	<app-a11y-select
+		label="Display Options"
+		[options]="displayOptions"
+	></app-a11y-select>
 
 	<details>
 		<summary>WCAG Level</summary>

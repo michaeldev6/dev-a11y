@@ -2,6 +2,7 @@
 	<label
 		aria-hidden="true"
 		[for]="'a11y-input_' + cid"
+		[id]="'a11y-input-label_' + cid"
 		[class.a11y-input__label-stick]="hasContent()"
 	>
 		{{ filterLabel }}
@@ -12,6 +13,7 @@
 			type="text"
 			(input)="onInputChanged($event)"
 			[id]="'a11y-input_' + cid"
+			[attr.aria-labelledby]="'a11y-input-label_' + cid"
 			[attr.aria-describedby]="generateDescribedByIds()"
 		/>
 		<button
