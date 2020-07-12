@@ -17,19 +17,6 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 		{
 			label: 'Group By Levels',
 			value: WcagFilterOptions.BY_LEVELS
-		},
-		{
-			label: 'Testing Grouped options',
-			options: [
-				{
-					label: 'Group option1',
-					value: 'test1',
-				},
-				{
-					label: 'Group option 2',
-					value: 'test2',
-				}
-			]
 		}
 	]
 }

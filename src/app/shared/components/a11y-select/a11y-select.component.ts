@@ -38,17 +38,6 @@ export class A11ySelectComponent extends BaseComponent {
 
 	@Output() onOptionSelected: EventEmitter<ISelectOption> = new EventEmitter<ISelectOption>();
 
-	generateDescribedByIds(): string | null {
-		let describedByIds: string | null = null;
-		if (!!this.describedByText) {
-			describedByIds = `a11y-select_describedby_${this.cid} `;
-		}
-		if (!!this.describedByIds) {
-			describedByIds += this.describedByIds;
-		}
-		return describedByIds;
-	}
-
 	private generateMappedOptions(): void {
 		if (this._options && this._options.length > 0) {
 			this._options.forEach((option: ISelectOption | ISelectOptionGroup) => {
@@ -76,7 +65,6 @@ export class A11ySelectComponent extends BaseComponent {
 	onSelectChanged(element: EventTarget): void {
 		const value: string = (element as HTMLSelectElement).value;
 		this.selectedOption = this._mappedOptions[value];
-		console.log(this.selectedOption);
 	}
 
 	setDefaultSelected(): void {
