@@ -18,13 +18,14 @@ const COMPONENTS = [
 	PopOverComponent,
 	PageWrapperComponent,
 	A11yInputComponent,
+	A11ySelectComponent,
 ];
 
 @NgModule({
 	declarations: [
 		...DIRECTIVES,
 		...COMPONENTS,
-		A11ySelectComponent,
+
 	],
 	imports: [
 		CommonModule
@@ -32,7 +33,6 @@ const COMPONENTS = [
 	exports: [
 		...DIRECTIVES,
 		...COMPONENTS,
-		A11ySelectComponent,
 	]
 })
 export class SharedModule { }
