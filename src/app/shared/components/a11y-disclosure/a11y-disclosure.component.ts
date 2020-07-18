@@ -6,11 +6,15 @@ import {BaseComponent} from '../../../core/components/base/base.component';
   templateUrl: './a11y-disclosure.component.html',
   styleUrls: ['./a11y-disclosure.component.scss']
 })
-export class A11yDisclosureComponent extends BaseComponent implements OnInit {
+export class A11yDisclosureComponent extends BaseComponent {
 
-	@Input() summary: string = 'Summary Text Here';
+	private _expanded: boolean;
 
-	ngOnInit(): void {
+	@Input() summary = 'Summary Text Here';
+	@Input() set expanded(value: boolean) {
+		this._expanded = !!value ? value : undefined;
 	}
-
+	get expanded(): boolean | undefined {
+		return this._expanded !== undefined ? this._expanded : undefined;
+	}
 }
