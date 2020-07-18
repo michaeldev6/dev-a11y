@@ -1,0 +1,11 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+details {
+	summary {
+		&::-webkit-details-marker {
+			color: var(--primary-color);
+			margin-right: var(--primary-spacing);
+		}
+	}
+}
