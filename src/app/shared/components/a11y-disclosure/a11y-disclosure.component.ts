@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {BaseComponent} from '../../../core/components/base/base.component';
 
 @Component({
@@ -8,13 +8,18 @@ import {BaseComponent} from '../../../core/components/base/base.component';
 })
 export class A11yDisclosureComponent extends BaseComponent {
 
-	private _expanded: boolean;
-
 	@Input() summary = 'Summary Text Here';
-	@Input() set expanded(value: boolean) {
-		this._expanded = !!value ? value : undefined;
-	}
-	get expanded(): boolean | undefined {
-		return this._expanded !== undefined ? this._expanded : undefined;
+	@Input() expanded = false;
+
+	@Output() onExpandToggle: EventEmitter<boolean>= new EventEmitter<boolean>();
+
+	@ViewChild('details') detailElement: ElementRef;
+
+	onSummaryClicked(): void {
+		// event happens at moment when details is still open. Need timeout to wait for paint cycle
+		setTimeout(() => {
+			this.expanded = (this.detailElement.nativeElement as HTMLDetailsElement).open;
+			this.onExpandToggle.emit(this.expanded);
+		});
 	}
 }

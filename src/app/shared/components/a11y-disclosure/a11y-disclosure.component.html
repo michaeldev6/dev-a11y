@@ -1,4 +1,4 @@
-<details [attr.open]="expanded">
-	<summary>{{summary}}</summary>
+<details #details [open]="expanded">
+	<summary (click)="onSummaryClicked()">{{summary}}</summary>
 	<ng-content></ng-content>
 </details>
