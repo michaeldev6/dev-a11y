@@ -11,7 +11,7 @@ export class A11yDisclosureComponent extends BaseComponent {
 	@Input() summary = 'Summary Text Here';
 	@Input() expanded = false;
 
-	@Output() onExpandToggle: EventEmitter<boolean>= new EventEmitter<boolean>();
+	@Output() onExpandToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	@ViewChild('details') detailElement: ElementRef;
 
