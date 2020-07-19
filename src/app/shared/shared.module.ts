@@ -31,9 +31,9 @@ const COMPONENTS = [
 	imports: [
 		CommonModule
 	],
-    exports: [
-        ...DIRECTIVES,
-        ...COMPONENTS,
-    ]
+	exports: [
+		...DIRECTIVES,
+		...COMPONENTS,
+	]
 })
 export class SharedModule { }
