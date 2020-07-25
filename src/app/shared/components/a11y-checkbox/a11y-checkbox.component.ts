@@ -52,7 +52,6 @@ export class A11yCheckboxComponent extends BaseComponent {
 	whenInputChanged(event: Event): void {
 		const checkbox: HTMLInputElement = event.target as HTMLInputElement;
 		this._checkboxState = checkbox.checked ? CheckboxState.Checked : CheckboxState.Unchecked;
-		console.log(this._checkboxState);
 		this.updateCheckboxState();
 	}
 }
