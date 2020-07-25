@@ -11,20 +11,16 @@
 		[options]="displayOptions"
 	></app-a11y-select>
 
-	<app-a11y-disclosure summary="WCAG Levels">
-		<ul>
-			<li>[Checkbox] A</li>
-			<li>[Checkbox] AA</li>
-			<li>[Checkbox] AAA</li>
-		</ul>
+	<app-a11y-disclosure summary="WCAG Levels" [expanded]="true">
+		<app-a11y-checkbox label="A"></app-a11y-checkbox>
+		<app-a11y-checkbox label="AA"></app-a11y-checkbox>
+		<app-a11y-checkbox label="AAA"></app-a11y-checkbox>
 	</app-a11y-disclosure>
 
 	<hr />
 
-	<app-a11y-disclosure summary="Tags">
-		<ul>
-			<li>Visual</li>
-			<li>Text</li>
-		</ul>
+	<app-a11y-disclosure summary="Tags" [expanded]="true">
+		<app-a11y-checkbox label="Visual"></app-a11y-checkbox>
+		<app-a11y-checkbox label="Text"></app-a11y-checkbox>
 	</app-a11y-disclosure>
 </div>

@@ -1,0 +1,86 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+.checkbox__container {
+	@include flex(row, flex-start, center);
+
+	label {
+		@include userSelect(none);
+		cursor: pointer;
+		padding-top: 0.25rem;
+		flex-grow: 1;
+	}
+
+	&.right {
+		label {
+			text-align: right;
+			margin-right: var(--primary-spacing);
+		}
+	}
+
+	.checkbox__input {
+		margin-right: var(--primary-spacing);
+		position: relative;
+
+		input {
+			cursor: pointer;
+			margin: 0;
+			transform: scaleY(0.95);
+		}
+
+		&::before,
+		&::after {
+			pointer-events: none;
+		}
+
+		&:before {
+			@include absolute-fill;
+			@include border-radius(0.1875rem);
+			background-color: var(--white);
+			border: var(--default-color-border);
+			content: '';
+			transform: translateY(0.0625rem); // before is up by 1px for some reason
+			z-index: 1;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+		}
+
+		&.checked {
+			&:before {
+				background-color: var(--primary-color);
+			}
+
+			&:after {
+				border-bottom: 0.125rem solid var(--white);
+				border-left: 0.125rem solid var(--white);
+				height: 0.25rem;
+				left: 20%;
+				top: 35%;
+				width: 50%;
+				transform: rotate(-45deg);
+				z-index: 2;
+			}
+		}
+
+		&.indeterminate {
+			&:before {
+				background-color: var(--primary-color);
+			}
+
+			&:after {
+				border-bottom: 0.125rem solid var(--white);
+				height: 0.0625rem;
+				left: 25%;
+				top: calc(50% - 0.0625rem);
+				width: 50%;
+				z-index: 2;
+			}
+		}
+	}
+}
+
+
+
