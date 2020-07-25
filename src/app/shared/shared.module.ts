@@ -8,6 +8,12 @@ import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.com
 import { A11yInputComponent } from './components/a11y-input/a11y-input.component';
 import { A11ySelectComponent } from './components/a11y-select/a11y-select.component';
 import { A11yDisclosureComponent } from './components/a11y-disclosure/a11y-disclosure.component';
+import { A11yCheckboxComponent } from './components/a11y-checkbox/a11y-checkbox.component';
+import { ToRemPipe } from './pipes/to-rem.pipe';
+
+const PIPES = [
+	ToRemPipe,
+];
 
 const DIRECTIVES = [
 	AutoAriaHideDirective,
@@ -21,10 +27,12 @@ const COMPONENTS = [
 	A11yInputComponent,
 	A11ySelectComponent,
 	A11yDisclosureComponent,
+	A11yCheckboxComponent,
 ];
 
 @NgModule({
 	declarations: [
+		...PIPES,
 		...DIRECTIVES,
 		...COMPONENTS,
 	],
@@ -32,6 +40,7 @@ const COMPONENTS = [
 		CommonModule
 	],
 	exports: [
+		...PIPES,
 		...DIRECTIVES,
 		...COMPONENTS,
 	]

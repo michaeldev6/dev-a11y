@@ -42,6 +42,13 @@
 	transition-timing-function: ease-in-out;
 }
 
+@mixin userSelect($select) {
+	user-select: $select;
+	-moz-user-select: $select;
+	-ms-user-select: $select;
+	-webkit-user-select: $select;
+}
+
 @mixin MQ($point) {
   @if $point == 'lg' {
     @media only screen and (min-width: $layout-lg-size) {

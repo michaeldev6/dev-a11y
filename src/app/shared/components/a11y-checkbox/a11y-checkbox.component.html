@@ -1,0 +1,35 @@
+<div class="checkbox__container {{checkboxPosition}}">
+	<ng-container *ngIf="checkboxPosition === checkboxPositionEnum.Right">
+		<ng-container *ngTemplateOutlet="checkboxLabel"></ng-container>
+	</ng-container>
+	<div
+		class="checkbox__input {{checkboxState}}"
+		[style.width]="checkboxSize | toRem"
+		[style.height]="checkboxSize | toRem"
+	>
+		<input
+			[checked]="checked"
+			[indeterminate]="indeterminate"
+			[id]="'a11y-checkbox_' + cid"
+			[attr.aria-labelledby]="'a11y-checkbox-label_' + cid"
+			[style.width]="checkboxSize | toRem"
+			[style.height]="checkboxSize | toRem"
+			(change)="whenInputChanged($event)"
+			type="checkbox"
+		/>
+	</div>
+	<ng-container *ngIf="checkboxPosition === checkboxPositionEnum.Left">
+		<ng-container *ngTemplateOutlet="checkboxLabel"></ng-container>
+	</ng-container>
+</div>
+
+<ng-template #checkboxLabel>
+	<label
+		aria-hidden="true"
+		class="checkbox__label-left"
+		[for]="'a11y-checkbox_' + cid"
+		[id]="'a11y-checkbox-label_' + cid"
+	>
+		{{ label }}
+	</label>
+</ng-template>
