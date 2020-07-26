@@ -12,7 +12,7 @@ export class HomeComponent extends BasePageComponent implements OnInit {
 		{
 			route: '/wcag',
 			heading: 'WCAG Checklist',
-			description: 'Look through the guidelines and get a quick understanding of what each one means. A filter is available to help you out.'
+			description: 'Look through the guidelines and get a quick understanding of what each one means. A filter is available to help you search for what you\'re looking for.'
 		},
 		{
 			route: '/aria',
@@ -22,7 +22,7 @@ export class HomeComponent extends BasePageComponent implements OnInit {
 		{
 			route: '/code-samples',
 			heading: 'Code Samples',
-			description: 'Have a look at common feature and components web applications utilize and how to make them accessible.'
+			description: 'Have a look at common features and components web applications utilize and how to make them accessible.'
 		},
 		{
 			route: '/screen-readers',
