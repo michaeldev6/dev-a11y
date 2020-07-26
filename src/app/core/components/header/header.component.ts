@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren} from 
 import {BaseComponent} from '../base/base.component';
 import {FocusableIds} from '../../../shared/enums/focusable-ids';
 import {KeyboardService} from '../../services/keyboard.service';
-import {takeWhile} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {IRouteItem} from '../../../shared/interfaces/route-item';
 import {PopOverPositions} from '../../../shared/enums/pop-over-positions';
 import {PopOverComponent} from '../../../shared/components/pop-over/pop-over.component';
@@ -39,7 +39,7 @@ export class HeaderComponent extends BaseComponent implements OnInit {
 
 	getRoute(): void {
 		this.routingService.getCurrentRoute()
-			.pipe(takeWhile(() => this.active)	)
+			.pipe(takeUntil(this._unsubscribe$))
 			.subscribe((route: string) => {
 				this.currentRoute = route;
 			});

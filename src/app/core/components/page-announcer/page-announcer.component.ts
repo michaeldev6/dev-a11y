@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BaseComponent} from '../base/base.component';
 import {AssertiveStates} from '../../../shared/enums/assertive-states';
 import {AnnouncerService} from '../../services/announcer.service';
-import {takeWhile} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {IAnnouncementEvent} from '../../../shared/interfaces/announcement-event';
 
 @Component({
@@ -28,7 +28,7 @@ export class PageAnnouncerComponent extends BaseComponent implements OnInit{
 
 	getAnnouncement(): void {
 		this.announcerService.getAnnouncement()
-			.pipe(takeWhile(() => this.active))
+			.pipe(takeUntil(this._unsubscribe$))
 			.subscribe((event: IAnnouncementEvent) => {
 				this.handleAnnouncementEvent(event);
 			});

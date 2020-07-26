@@ -2,7 +2,7 @@ import {Component, ContentChild, ElementRef, HostListener, Input, OnInit, Render
 import {BaseComponent} from '../../../core/components/base/base.component';
 import {v4 as uuidv4} from 'uuid';
 import {KeyboardService} from '../../../core/services/keyboard.service';
-import {takeWhile} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {IKeypressEvent} from '../../interfaces/keypress-event';
 import {PopOverPositions} from '../../enums/pop-over-positions';
 import {OutlineStyle} from '../../enums/outline-style';
@@ -60,7 +60,7 @@ export class PopOverComponent extends BaseComponent implements OnInit {
 
 	private listenToKeyboardEvents(): void {
 		this.keyboardService.getKeypressEvent()
-			.pipe(takeWhile(() => this.active))
+			.pipe(takeUntil(this._unsubscribe$))
 			.subscribe((event: IKeypressEvent) => {
 				this.handleKeyPressEvent(event);
 			});

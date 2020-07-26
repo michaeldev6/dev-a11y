@@ -1,14 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import { OnInit } from '@angular/core';
 import {BaseComponent} from '../base/base.component';
 import {PageTitleService} from '../../services/page-title.service';
 import {WindowUtil} from '../../../shared/utils/window.util';
 
-@Component({
-	selector: 'app-base-page',
-	template: '',
-	styleUrls: []
-})
-export class BasePageComponent extends BaseComponent implements OnInit {
+export abstract class BasePageComponent extends BaseComponent implements OnInit {
 	private _pageTitle = '';
 
 	set pageTitle(title: string) {
