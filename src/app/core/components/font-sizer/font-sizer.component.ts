@@ -3,10 +3,7 @@ import {
 	OnInit,
 	Renderer2,
 } from '@angular/core';
-import {
-	filter,
-	takeWhile,
-} from 'rxjs/operators';
+import { filter, takeUntil,} from 'rxjs/operators';
 import {BaseComponent} from '../base/base.component';
 import {FontSizeService} from '../../services/font-size.service';
 import {WindowUtil} from '../../../shared/utils/window.util';
@@ -43,7 +40,7 @@ export class FontSizerComponent extends BaseComponent implements OnInit {
 	private getFontSize(): void {
 		this.fontSizeService.getSiteFontSize()
 			.pipe(
-				takeWhile(() => this.active),
+				takeUntil(this._unsubscribe$),
 				filter(size => this.fontSize !== size)
 			)
 			.subscribe((size: number) => {

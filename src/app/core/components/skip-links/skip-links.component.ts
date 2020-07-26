@@ -3,7 +3,7 @@ import {BaseComponent} from '../base/base.component';
 import {FocusService} from '../../services/focus.service';
 import {SkipLinksService} from '../../services/skip-links.service';
 import {ISkipLink} from '../../../shared/interfaces/skip-link';
-import {takeWhile} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {FocusableIds} from '../../../shared/enums/focusable-ids';
 
 @Component({
@@ -30,7 +30,7 @@ export class SkipLinksComponent extends BaseComponent implements OnInit {
 
   private getSkipLinks(): void {
     this.skipLinkService.getSkipLinks()
-      .pipe(takeWhile(() => this.active))
+      .pipe(takeUntil(this._unsubscribe$))
       .subscribe((skipLinks: ISkipLink[]) => {
         this.skipLinks = skipLinks;
       });

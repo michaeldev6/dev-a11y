@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BaseComponent} from '../base/base.component';
 import {IRouteItem} from '../../../shared/interfaces/route-item';
 import {MAIN_NAV} from '../../../shared/constants/main-nav';
-import {takeWhile} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {RoutingService} from '../../services/routing.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class FooterNavComponent extends BaseComponent implements OnInit {
 
 	getRoute(): void {
 		this.routingService.getCurrentRoute()
-			.pipe(takeWhile(() => this.active))
+			.pipe(takeUntil(this._unsubscribe$))
 			.subscribe((route: string) => {
 				this.currentRoute = route;
 			});

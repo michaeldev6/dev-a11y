@@ -5,7 +5,7 @@
 		[appFocusable]="focusableId"
 		[isTabbable]="true"
 		[attr.aria-expanded]="isExpanded"
-		[attr.aria-owns]="id"
+		[attr.aria-owns]="'popover_' + cid"
 		[class]="'pop-over__toggle ' + buttonOutlineStyle"
 		(click)="togglePopover()">
 		<ng-content select="[pop-over-button-content]"></ng-content>
@@ -15,7 +15,7 @@
 		*ngIf="isExpanded"
 		[class]="'pop-over__content ' + popoverPosition"
 		tabindex="-1"
-		[id]="id">
+		[id]="'popover_' + cid">
 		<ng-content select="[pop-over-content]"></ng-content>
 		<button
 			aria-label="Close pop over"

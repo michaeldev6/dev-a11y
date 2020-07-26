@@ -3,7 +3,7 @@ import {BasePageComponent} from '../../../../core/components/base-page/base-page
 import {PageTitleService} from '../../../../core/services/page-title.service';
 import {ActivatedRoute, Data} from '@angular/router';
 import {IWCAGItem} from '../../../../shared/interfaces/wcag-item';
-import {takeWhile} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-wcag-item',
@@ -29,7 +29,7 @@ export class WcagItemComponent extends BasePageComponent implements OnInit {
 
 	private getWcagItem(): void {
 		this.route.data
-			.pipe(takeWhile(() => this.active)	)
+			.pipe(takeUntil(this._unsubscribe$))
 			.subscribe((data:Data) => {
 				if (!!data['wcagItem']) {
 					this.wcagItem = data['wcagItem'];
