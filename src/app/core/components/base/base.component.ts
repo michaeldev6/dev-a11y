@@ -16,7 +16,6 @@ export abstract class BaseComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy(): void {
 		this.active = false;
-
 		this._unsubscribe$.next();
 		this._unsubscribe$.complete();
 	}
