@@ -4,6 +4,12 @@
 .wcag__container {
 	@include flex(row, flex-start, stretch);
 
+	h2 {
+		margin: 0;
+		margin-bottom: var(--primary-spacing);
+		font-size: 1.125rem;
+	}
+
 	.wcag__filter {
 		border-right: 0.1875rem solid var(--bright-grey);
 		margin-right: var(--primary-spacing-double);

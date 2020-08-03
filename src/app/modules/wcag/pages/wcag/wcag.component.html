@@ -1,9 +1,15 @@
 <app-page-wrapper heading="WCAG Checklist">
 	<div class="wcag__container">
-		<section aria-label="WCAG Filter Options" class="wcag__filter">
+		<section [attr.aria-labelledby]="'wcag-filter-heading_' + cid" class="wcag__filter">
+			<h2 [id]="'wcag-filter-heading_' + cid">
+				Wcag Filter Options
+			</h2>
 			<app-wcag-list-filter></app-wcag-list-filter>
 		</section>
-		<section aria-label="WCAG Guidelines" class="wcag__list">
+		<section [attr.aria-labelledby]="'wcag-items-heading_' + cid" class="wcag__list">
+			<h2 [id]="'wcag-items-heading_' + cid">
+				WCAG Items
+			</h2>
 			<app-wcag-list></app-wcag-list>
 		</section>
 	</div>
