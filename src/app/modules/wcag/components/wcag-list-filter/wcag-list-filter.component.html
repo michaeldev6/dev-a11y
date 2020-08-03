@@ -12,15 +12,20 @@
 	></app-a11y-select>
 
 	<app-a11y-disclosure summary="WCAG Levels" [expanded]="true">
-		<app-a11y-checkbox label="A"></app-a11y-checkbox>
-		<app-a11y-checkbox label="AA"></app-a11y-checkbox>
-		<app-a11y-checkbox label="AAA"></app-a11y-checkbox>
+		<app-a11y-checkbox
+			*ngFor="let level of wcagLevels; trackBy: trackByFn"
+			[label]="level"
+			(onStateChanged)="onWcagLevelChecked($event, level)"
+		></app-a11y-checkbox>
 	</app-a11y-disclosure>
 
 	<hr />
 
 	<app-a11y-disclosure summary="Tags" [expanded]="true">
-		<app-a11y-checkbox label="Visual"></app-a11y-checkbox>
-		<app-a11y-checkbox label="Text"></app-a11y-checkbox>
+		<app-a11y-checkbox
+			*ngFor="let tag of wcagTags; trackBy: trackByFn"
+			[label]="tag"
+			(onStateChanged)="onWcagTagChecked($event, tag)"
+		></app-a11y-checkbox>
 	</app-a11y-disclosure>
 </div>

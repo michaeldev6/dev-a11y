@@ -1,6 +1,6 @@
 import {IWCAGItem} from '../../../interfaces/wcag-item';
 import {WCAGLevel} from '../../../enums/wcag-levels';
-import {WCAGItemTags} from '../../../enums/wcag-tags';
+import {WCAGItemTag} from '../../../enums/wcag-tags';
 import {WCAGIds} from '../../../enums/wcag-ids';
 
 const item: IWCAGItem = {
@@ -10,7 +10,7 @@ const item: IWCAGItem = {
   purpose: 'Some users may have visual issues where they may not be able to distinguish slight difference in the contrast of colours. Color blindness would be an example of such an impairment',
   relatedItems: [WCAGIds.WCAG146],
   level: WCAGLevel.AA,
-  tags: [WCAGItemTags.TEXT, WCAGItemTags.STYLE, WCAGItemTags.LAYOUT],
+  tags: [WCAGItemTag.TEXT, WCAGItemTag.STYLE, WCAGItemTag.LAYOUT],
   ariaRoles: [],
   ariaAttributes: [],
   wcagLink: 'https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html'

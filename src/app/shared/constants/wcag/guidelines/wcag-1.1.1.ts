@@ -1,6 +1,6 @@
 import {IWCAGItem} from '../../../interfaces/wcag-item';
 import {WCAGLevel} from '../../../enums/wcag-levels';
-import {WCAGItemTags} from '../../../enums/wcag-tags';
+import {WCAGItemTag} from '../../../enums/wcag-tags';
 import {WCAGIds} from '../../../enums/wcag-ids';
 
 const item: IWCAGItem = {
@@ -10,7 +10,7 @@ const item: IWCAGItem = {
   purpose: 'Non-text content may not be able to be seen by everyone. Providing text alternatives helps give an another way for users to understand the non-text content',
   relatedItems: [WCAGIds.WCAG145, WCAGIds.WCAG149],
   level: WCAGLevel.A,
-  tags: [WCAGItemTags.TEXT, WCAGItemTags.MEDIA, WCAGItemTags.IMAGES],
+  tags: [WCAGItemTag.TEXT, WCAGItemTag.MEDIA, WCAGItemTag.IMAGES],
   ariaRoles: [],
   ariaAttributes: [],
   wcagLink: 'https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html'

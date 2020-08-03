@@ -3,37 +3,56 @@ import {WCAGGuidelines} from '../../shared/constants/wcag/guidelines/wcag-guidel
 import {IWCAGItem} from '../../shared/interfaces/wcag-item';
 import {WCAGLevel} from '../../shared/enums/wcag-levels';
 import {WCAGIds} from '../../shared/enums/wcag-ids';
+import {CommonUtil} from '../../shared/utils/common.util';
+import {WCAGItemTag} from '../../shared/enums/wcag-tags';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class WcagService {
 
-  private wcagIds: string[] = Object.keys(WCAGGuidelines);
+	private _wcagIds: string[] = Object.keys(WCAGGuidelines);
+	private _wcagLevels: WCAGLevel[] = [];
+	private _wcagTags: WCAGItemTag[] = [];
 
-  constructor() { }
+	constructor() {
+		this.convertEnumsToLists();
+	}
 
-  getWCAGIds(): string[] {
-    return this.wcagIds;
-  }
+	private convertEnumsToLists(): void {
+		this._wcagLevels = CommonUtil.makeListFromEnum(WCAGLevel) as WCAGLevel[];
+		this._wcagTags = CommonUtil.makeListFromEnum(WCAGItemTag) as WCAGItemTag[];
+	}
 
-  getAllWCAGItems(): IWCAGItem[] {
-    return this.wcagIds.map((id: string) => WCAGGuidelines[id]);
-  }
+	getWCAGIds(): string[] {
+		return this._wcagIds;
+	}
 
-  getWcagItem(id: WCAGIds): IWCAGItem {
-  	return WCAGGuidelines[id];
-  }
+	getAllWCAGItems(): IWCAGItem[] {
+		return this._wcagIds.map((id: string) => WCAGGuidelines[id]);
+	}
 
-  getWCAGLevelAItems(): IWCAGItem[] {
-    return this.getAllWCAGItems().filter((item: IWCAGItem) => item.level === WCAGLevel.A);
-  }
+	getWcagItem(id: WCAGIds): IWCAGItem {
+		return WCAGGuidelines[id];
+	}
 
-  getWCAGLevelAAItems(): IWCAGItem[] {
-    return this.getAllWCAGItems().filter((item: IWCAGItem) => item.level === WCAGLevel.AA);
-  }
+	getWCAGLevelAItems(): IWCAGItem[] {
+		return this.getAllWCAGItems().filter((item: IWCAGItem) => item.level === WCAGLevel.A);
+	}
 
-  getWCAGLevelAAAItems(): IWCAGItem[] {
-    return this.getAllWCAGItems().filter((item: IWCAGItem) => item.level === WCAGLevel.AAA);
-  }
+	getWCAGLevelAAItems(): IWCAGItem[] {
+		return this.getAllWCAGItems().filter((item: IWCAGItem) => item.level === WCAGLevel.AA);
+	}
+
+	getWCAGLevelAAAItems(): IWCAGItem[] {
+		return this.getAllWCAGItems().filter((item: IWCAGItem) => item.level === WCAGLevel.AAA);
+	}
+
+	getWcagLevels(): WCAGLevel[] {
+		return this._wcagLevels;
+	}
+
+	getWcagTags(): WCAGItemTag[] {
+		return this._wcagTags;
+	}
 }

@@ -47,6 +47,7 @@ export class A11yCheckboxComponent extends BaseComponent {
 				this._indeterminate = true;
 				break;
 		}
+		this.onStateChanged.emit(this._checkboxState);
 	}
 
 	whenInputChanged(event: Event): void {

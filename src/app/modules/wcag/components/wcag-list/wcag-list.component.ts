@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {WcagService} from '../../../../core/services/wcag.service';
 import {IWCAGItem} from '../../../../shared/interfaces/wcag-item';
 import {BaseComponent} from '../../../../core/components/base/base.component';
-import {WcagFilterOptions} from '../../../../shared/enums/wcag-filter';
+import {WcagFilterDisplayOptions} from '../../../../shared/enums/wcag-filter';
 
 @Component({
   selector: 'app-wcag-list',
@@ -11,12 +11,12 @@ import {WcagFilterOptions} from '../../../../shared/enums/wcag-filter';
 })
 export class WcagListComponent extends BaseComponent implements OnInit {
 
-	private _filterOptions: WcagFilterOptions;
+	private _filterOptions: WcagFilterDisplayOptions;
 	private _wcagItems: IWCAGItem[] = [];
 
 	displayedWcagItems: IWCAGItem[] = [];
 
-	@Input() set filterOptions(value: WcagFilterOptions) {
+	@Input() set filterOptions(value: WcagFilterDisplayOptions) {
 		this._filterOptions = value;
 		this.applyFilter();
 	}

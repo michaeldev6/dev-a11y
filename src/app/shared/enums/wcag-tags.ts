@@ -1,4 +1,4 @@
-export enum WCAGItemTags {
+export enum WCAGItemTag {
   ARIA = 'Aria',
   FORMS = 'Forms',
   IMAGES = 'Images',
