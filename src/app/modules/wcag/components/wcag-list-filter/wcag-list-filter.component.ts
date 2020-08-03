@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {BaseComponent} from '../../../../core/components/base/base.component';
 import {ISelectOption, ISelectOptions} from '../../../../shared/interfaces/a11y-select';
-import {WcagFilterDisplayOptions} from '../../../../shared/enums/wcag-filter';
+import {WcagFilterSortOptions} from '../../../../shared/enums/wcag-filter';
 import {WCAGLevel} from '../../../../shared/enums/wcag-levels';
 import {CheckboxState} from '../../../../shared/enums/a11y-checkbox';
 import {WcagService} from '../../../../core/services/wcag.service';
@@ -17,15 +17,23 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 
 	readonly checkboxState: typeof CheckboxState = CheckboxState;
 
-	readonly displayOptions: ISelectOptions = [
+	readonly sortOptions: ISelectOptions = [
 		{
-			label: 'Order by Ids',
-			value: WcagFilterDisplayOptions.BY_ID
+			label: 'Order by Ids (ASC)',
+			value: WcagFilterSortOptions.BY_ID_ASC
 		},
 		{
-			label: 'Group By Levels',
-			value: WcagFilterDisplayOptions.BY_LEVELS
-		}
+			label: 'Order by Ids (DESC)',
+			value: WcagFilterSortOptions.BY_ID_DESC
+		},
+		{
+			label: 'Group By Levels (ASC)',
+			value: WcagFilterSortOptions.BY_LEVELS_ASC
+		},
+		{
+			label: 'Group By Levels (DESC)',
+			value: WcagFilterSortOptions.BY_LEVELS_DESC
+		},
 	];
 
 	readonly wcagLevels: WCAGLevel[];
@@ -58,18 +66,18 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 		if (!this._appliedFilters) {
 			this._appliedFilters = {
 				search: '',
-				display: WcagFilterDisplayOptions.BY_ID,
+				sort: WcagFilterSortOptions.BY_ID_ASC,
 				levels: new Set<WCAGLevel>(),
 				tags: new Set<WCAGItemTag>(),
 			}
 		}
 
 		this._appliedFilters.search = '';
-		this._appliedFilters.display = WcagFilterDisplayOptions.BY_ID;
+		this._appliedFilters.sort = WcagFilterSortOptions.BY_ID_ASC;
 		this._appliedFilters.levels.clear();
 		this._appliedFilters.tags.clear();
 
-		this._selectedDisplayOption = this.displayOptions[0] as ISelectOption;
+		this._selectedDisplayOption = this.sortOptions[0] as ISelectOption;
 	}
 
 	private triggerEvent(): void {
@@ -83,7 +91,7 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 
 	whenOptionSelected(option: ISelectOption): void {
 		this._selectedDisplayOption = option;
-		this._appliedFilters.display = option.value as WcagFilterDisplayOptions;
+		this._appliedFilters.sort = option.value as WcagFilterSortOptions;
 		this.triggerEvent();
 	}
 
