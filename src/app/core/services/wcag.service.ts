@@ -5,6 +5,9 @@ import {WCAGLevel} from '../../shared/enums/wcag-levels';
 import {WCAGIds} from '../../shared/enums/wcag-ids';
 import {CommonUtil} from '../../shared/utils/common.util';
 import {WCAGItemTag} from '../../shared/enums/wcag-tags';
+import {IWcagFilterOptions} from '../../shared/interfaces/wcag-filter-options';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {WcagFilterSortOptions} from '../../shared/enums/wcag-filter';
 
 @Injectable({
 	providedIn: 'root'
@@ -15,6 +18,14 @@ export class WcagService {
 	private _wcagLevels: WCAGLevel[] = [];
 	private _wcagTags: WCAGItemTag[] = [];
 
+	private _wcagListFilters: IWcagFilterOptions = {
+		search: '',
+		sort: WcagFilterSortOptions.BY_ID_ASC,
+		levels: new Set<WCAGLevel>(),
+		tags: new Set<WCAGItemTag>(),
+	};
+	private _wcagListFilters$: BehaviorSubject<IWcagFilterOptions> = new BehaviorSubject<IWcagFilterOptions>(this._wcagListFilters);
+
 	constructor() {
 		this.convertEnumsToLists();
 	}
@@ -24,12 +35,12 @@ export class WcagService {
 		this._wcagTags = CommonUtil.makeListFromEnum(WCAGItemTag) as WCAGItemTag[];
 	}
 
-	getWCAGIds(): string[] {
-		return this._wcagIds;
-	}
-
 	getAllWCAGItems(): IWCAGItem[] {
 		return this._wcagIds.map((id: string) => WCAGGuidelines[id]);
+	}
+
+	getWCAGIds(): string[] {
+		return this._wcagIds;
 	}
 
 	getWcagItem(id: WCAGIds): IWCAGItem {
@@ -50,6 +61,15 @@ export class WcagService {
 
 	getWcagLevels(): WCAGLevel[] {
 		return this._wcagLevels;
+	}
+
+	listenToWcagFilterUpdates(): Observable<IWcagFilterOptions> {
+		return this._wcagListFilters$;
+	}
+
+	updateWcagListFilter(options: IWcagFilterOptions): void {
+		this._wcagListFilters = options;
+		this._wcagListFilters$.next(this._wcagListFilters);
 	}
 
 	getWcagTags(): WCAGItemTag[] {

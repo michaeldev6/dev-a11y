@@ -7,6 +7,7 @@ import {CheckboxState} from '../../../../shared/enums/a11y-checkbox';
 import {WcagService} from '../../../../core/services/wcag.service';
 import {WCAGItemTag} from '../../../../shared/enums/wcag-tags';
 import {IWcagFilterOptions} from '../../../../shared/interfaces/wcag-filter-options';
+import {take, takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'app-wcag-list-filter',
@@ -49,8 +50,6 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 		return this._selectedDisplayOption;
 	}
 
-	@Output() onFilterUpdated: EventEmitter<IWcagFilterOptions> = new EventEmitter<IWcagFilterOptions>();
-
 	constructor(private wcagService: WcagService) {
 		super();
 		this.wcagLevels = this.wcagService.getWcagLevels();
@@ -59,40 +58,47 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 
 	ngOnInit() {
 		super.ngOnInit();
-		this.resetFilters();
+		this.getFilterOptions();
+	}
+
+	private getFilterOptions(): void {
+		this.wcagService.listenToWcagFilterUpdates()
+			.pipe(
+				take(1),
+				takeUntil(this._unsubscribe$)
+			)
+			.subscribe((filters: IWcagFilterOptions) => {
+				this._appliedFilters = filters;
+				this._selectedDisplayOption = this.sortOptions.find((option: ISelectOption) => {
+					return option.value === this._appliedFilters.sort;
+				}) as ISelectOption;
+			})
 	}
 
 	resetFilters(): void {
-		if (!this._appliedFilters) {
-			this._appliedFilters = {
-				search: '',
-				sort: WcagFilterSortOptions.BY_ID_ASC,
-				levels: new Set<WCAGLevel>(),
-				tags: new Set<WCAGItemTag>(),
-			}
+		if (this._appliedFilters) {
+			this._appliedFilters.search = '';
+			this._appliedFilters.sort = WcagFilterSortOptions.BY_ID_ASC;
+			this._appliedFilters.levels.clear();
+			this._appliedFilters.tags.clear();
 		}
-
-		this._appliedFilters.search = '';
-		this._appliedFilters.sort = WcagFilterSortOptions.BY_ID_ASC;
-		this._appliedFilters.levels.clear();
-		this._appliedFilters.tags.clear();
 
 		this._selectedDisplayOption = this.sortOptions[0] as ISelectOption;
 	}
 
-	private triggerEvent(): void {
-		this.onFilterUpdated.emit(this._appliedFilters);
+	private updateSelectedFilters(): void {
+		this.wcagService.updateWcagListFilter(this._appliedFilters);
 	}
 
 	whenFilterChanged(filter: string): void {
 		this._appliedFilters.search = filter;
-		this.triggerEvent();
+		this.updateSelectedFilters();
 	}
 
 	whenOptionSelected(option: ISelectOption): void {
 		this._selectedDisplayOption = option;
 		this._appliedFilters.sort = option.value as WcagFilterSortOptions;
-		this.triggerEvent();
+		this.updateSelectedFilters();
 	}
 
 	whenWcagLevelChecked(checked: CheckboxState, level: WCAGLevel): void {
@@ -101,7 +107,7 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 		} else {
 			this._appliedFilters.levels.delete(level);
 		}
-		this.triggerEvent();
+		this.updateSelectedFilters();
 	}
 
 	whenWcagTagChecked(checked: CheckboxState, tag: WCAGItemTag): void {
@@ -110,6 +116,6 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 		} else {
 			this._appliedFilters.tags.delete(tag);
 		}
-		this.triggerEvent();
+		this.updateSelectedFilters();
 	}
 }
