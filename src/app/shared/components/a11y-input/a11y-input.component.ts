@@ -17,9 +17,9 @@ export class A11yInputComponent extends BaseComponent implements OnInit {
 	@Input() showDescribedByText = true;
 	@Input() useCloseButton = false;
 
-	@Output() onFilterChanged: EventEmitter<string> = new EventEmitter();
+	@Output() onValueChanged: EventEmitter<string> = new EventEmitter();
 
-	@ViewChild('inputFilter') inputFilter: ElementRef;
+	@ViewChild('input') inputFilter: ElementRef;
 
 	constructor(private announcer: AnnouncerService) {
 		super();
@@ -55,13 +55,13 @@ export class A11yInputComponent extends BaseComponent implements OnInit {
 	}
 
 	onInputChanged(event: Event): void {
-		const inputEvent: InputEvent = event as InputEvent;
-		this.inputValue = inputEvent.data;
+		const input: HTMLInputElement = event.target as HTMLInputElement;
+		this.inputValue = input.value;
 		this.triggerEvent();
 	}
 
 	private triggerEvent(): void {
-		this.onFilterChanged.emit(this.inputValue);
+		this.onValueChanged.emit(this.inputValue);
 	}
 
 }

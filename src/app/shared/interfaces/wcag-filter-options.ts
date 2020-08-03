@@ -5,6 +5,6 @@ import {WCAGItemTag} from '../enums/wcag-tags';
 export interface IWcagFilterOptions {
 	search?: string;
 	display?: WcagFilterDisplayOptions;
-	levels?: WCAGLevel[];
-	tags?: WCAGItemTag[];
+	levels?: Set<WCAGLevel>;
+	tags?: Set<WCAGItemTag>;
 }

@@ -2,6 +2,7 @@
 	<app-a11y-input
 		filterLabel="Filter WCAG Items"
 		[useCloseButton]="true"
+		(onValueChanged)="whenFilterChanged($event)"
 	>
 		<i class="fa fa-filter" post-content></i>
 	</app-a11y-input>
@@ -9,13 +10,16 @@
 	<app-a11y-select
 		label="Display Options"
 		[options]="displayOptions"
+		[selectedOption]="selectedDisplayOption"
+		(onOptionSelected)="whenOptionSelected($event)"
 	></app-a11y-select>
 
 	<app-a11y-disclosure summary="WCAG Levels" [expanded]="true">
 		<app-a11y-checkbox
 			*ngFor="let level of wcagLevels; trackBy: trackByFn"
 			[label]="level"
-			(onStateChanged)="onWcagLevelChecked($event, level)"
+			(onStateChanged)="whenWcagLevelChecked($event, level)"
+			[checkboxState]="appliedFilters.levels.has(level) ? checkboxState.Checked : checkboxState.Unchecked"
 		></app-a11y-checkbox>
 	</app-a11y-disclosure>
 
@@ -25,7 +29,8 @@
 		<app-a11y-checkbox
 			*ngFor="let tag of wcagTags; trackBy: trackByFn"
 			[label]="tag"
-			(onStateChanged)="onWcagTagChecked($event, tag)"
+			(onStateChanged)="whenWcagTagChecked($event, tag)"
+			[checkboxState]="appliedFilters.tags.has(tag) ? checkboxState.Checked : checkboxState.Unchecked"
 		></app-a11y-checkbox>
 	</app-a11y-disclosure>
 </div>
