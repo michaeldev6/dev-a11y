@@ -12,6 +12,7 @@
 			#input
 			type="text"
 			[value]="value"
+			autocomplete="off"
 			(input)="onInputChanged($event)"
 			[id]="'a11y-input_' + cid"
 			[attr.aria-labelledby]="'a11y-input-label_' + cid"

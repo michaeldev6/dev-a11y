@@ -166,4 +166,9 @@ details {
 
 ul {
 	margin: 0;
+
+	&.no-style {
+		padding: 0;
+		list-style: none;
+	}
 }
