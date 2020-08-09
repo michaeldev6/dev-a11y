@@ -37,5 +37,3 @@ export class SkipLinksService {
     this._skipLinks$.next(this.skipLinks);
   }
 }
-
-

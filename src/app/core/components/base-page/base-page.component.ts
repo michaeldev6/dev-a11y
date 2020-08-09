@@ -31,7 +31,7 @@ export abstract class BasePageComponent extends BaseComponent implements OnInit 
 		this.updateSkipLinks();
 	}
 
-	updateSkipLinks(): void {
+	protected updateSkipLinks(): void {
 		this.skipLinksService.updateSkipLinks();
 	}
 }

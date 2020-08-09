@@ -63,6 +63,10 @@ export class WcagService {
 		return this._wcagLevels;
 	}
 
+	getWcagTags(): WCAGItemTag[] {
+		return this._wcagTags;
+	}
+
 	listenToWcagFilterUpdates(): Observable<IWcagFilterOptions> {
 		return this._wcagListFilters$;
 	}
@@ -70,9 +74,5 @@ export class WcagService {
 	updateWcagListFilter(options: IWcagFilterOptions): void {
 		this._wcagListFilters = options;
 		this._wcagListFilters$.next(this._wcagListFilters);
-	}
-
-	getWcagTags(): WCAGItemTag[] {
-		return this._wcagTags;
 	}
 }
