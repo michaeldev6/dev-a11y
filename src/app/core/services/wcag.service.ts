@@ -8,6 +8,7 @@ import {WCAGItemTag} from '../../shared/enums/wcag-tags';
 import {IWcagFilterOptions} from '../../shared/interfaces/wcag-filter-options';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {WcagFilterSortOptions} from '../../shared/enums/wcag-filter';
+import {WcagUtils} from '../../modules/wcag/utils/wcag.utils';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,6 +38,32 @@ export class WcagService {
 
 	getAllWCAGItems(): IWCAGItem[] {
 		return this._wcagIds.map((id: string) => WCAGGuidelines[id]);
+	}
+
+	getFilteredItems(filterOptions: IWcagFilterOptions): IWCAGItem[] {
+		let items: IWCAGItem[] = this.getAllWCAGItems();
+		if (!!filterOptions) {
+			let filtered: IWCAGItem[] = items;
+
+			if (!!filterOptions.levels && filterOptions.levels.size > 0) {
+				filtered = WcagUtils.filterItemsByLevel(filtered, filterOptions.levels);
+			}
+
+			if (!!filterOptions.tags && filterOptions.tags.size > 0) {
+				filtered = WcagUtils.filterItemsByTags(filtered, filterOptions.tags);
+			}
+
+			if (!!filterOptions.search) {
+				filtered = WcagUtils.searchWcagItems(filtered, filterOptions.search);
+			}
+
+			if (!!filterOptions.sort) {
+				filtered = WcagUtils.sortWcagItems(filtered, filterOptions.sort);
+			}
+
+			items = filtered;
+		}
+		return items;
 	}
 
 	getWCAGIds(): string[] {

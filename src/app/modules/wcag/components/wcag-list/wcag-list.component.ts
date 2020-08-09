@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {WcagService} from '../../../../core/services/wcag.service';
 import {IWCAGItem} from '../../../../shared/interfaces/wcag-item';
 import {BaseComponent} from '../../../../core/components/base/base.component';
 import {IWcagFilterOptions} from '../../../../shared/interfaces/wcag-filter-options';
-import {WcagUtils} from '../../utils/wcag.utils';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
@@ -33,25 +32,7 @@ export class WcagListComponent extends BaseComponent implements OnInit {
 
 	private applyFilter(): void {
 		if (!!this._filterOptions) {
-			let filtered: IWCAGItem[] = this._wcagItems;
-
-			if (!!this._filterOptions.levels && this._filterOptions.levels.size > 0) {
-				filtered = WcagUtils.filterItemsByLevel(filtered, this._filterOptions.levels);
-			}
-
-			if (!!this._filterOptions.tags && this._filterOptions.tags.size > 0) {
-				filtered = WcagUtils.filterItemsByTags(filtered, this._filterOptions.tags);
-			}
-
-			if (!!this._filterOptions.search) {
-				filtered = WcagUtils.searchWcagItems(filtered, this._filterOptions.search);
-			}
-
-			if (!!this._filterOptions.sort) {
-				filtered = WcagUtils.sortWcagItems(filtered, this._filterOptions.sort);
-			}
-
-			this.displayedWcagItems = filtered;
+			this.displayedWcagItems = this.wcagService.getFilteredItems(this._filterOptions);
 		} else {
 			this.displayedWcagItems = this._wcagItems;
 		}
