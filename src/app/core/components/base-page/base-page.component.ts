@@ -2,6 +2,7 @@ import { OnInit } from '@angular/core';
 import {BaseComponent} from '../base/base.component';
 import {PageTitleService} from '../../services/page-title.service';
 import {WindowUtil} from '../../../shared/utils/window.util';
+import {SkipLinksService} from '../../services/skip-links.service';
 
 export abstract class BasePageComponent extends BaseComponent implements OnInit {
 	private _pageTitle = '';
@@ -19,6 +20,7 @@ export abstract class BasePageComponent extends BaseComponent implements OnInit 
 
 	constructor(
 		protected pageTitleService: PageTitleService,
+		protected skipLinksService: SkipLinksService,
 	) {
 		super();
 	}
@@ -26,5 +28,10 @@ export abstract class BasePageComponent extends BaseComponent implements OnInit 
 	ngOnInit() {
 		super.ngOnInit();
 		WindowUtil.focusOnBody();
+		this.updateSkipLinks();
+	}
+
+	updateSkipLinks(): void {
+		this.skipLinksService.updateSkipLinks();
 	}
 }
