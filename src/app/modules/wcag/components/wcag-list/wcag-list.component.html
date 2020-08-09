@@ -11,11 +11,8 @@
 			class="wcag-list__item"
 		>
 			<a [routerLink]="'/wcag/' + item.id" class="wcag-list__item__heading">
-				{{item.id}} - {{item.name}}
+				{{item.id}}: {{item.name}} - {{item.level}}
 			</a>
-			<div class="wcag-list__item__level">
-				Level {{item.level}}
-			</div>
 			<div class="wcag-list__item__description">
 				{{item.description}}
 			</div>

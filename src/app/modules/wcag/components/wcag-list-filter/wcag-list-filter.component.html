@@ -15,7 +15,7 @@
 		(onOptionSelected)="whenOptionSelected($event)"
 	></app-a11y-select>
 
-	<app-a11y-disclosure summary="WCAG Levels" [expanded]="true">
+	<app-a11y-disclosure summary="WCAG Levels">
 		<ul class="no-style">
 			<li *ngFor="let level of wcagLevels; trackBy: trackByFn">
 				<app-a11y-checkbox
@@ -29,7 +29,7 @@
 
 	<hr />
 
-	<app-a11y-disclosure summary="Tags" [expanded]="true">
+	<app-a11y-disclosure summary="Tags">
 		<ul class="no-style">
 			<li *ngFor="let tag of wcagTags; trackBy: trackByFn">
 				<app-a11y-checkbox
