@@ -18,11 +18,13 @@
 					*ngIf="!isOptionGroup(option)"
 					[value]="option.value"
 					[selected]="!!selectedOption && selectedOption.value == option.value"
+					[attr.aria-label]="!!option.ariaLabel ? option.ariaLabel : null"
 				>
 					{{ option.label }}
 				</option>
 				<optgroup
 					*ngIf="isOptionGroup(option)"
+					[attr.aria-label]="!!option.ariaLabel ? option.ariaLabel : null"
 					[label]="option.label"
 				>
 					<option

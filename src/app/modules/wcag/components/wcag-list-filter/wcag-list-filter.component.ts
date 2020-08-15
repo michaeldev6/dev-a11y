@@ -20,19 +20,23 @@ export class WcagListFilterComponent extends BaseComponent implements OnInit {
 
 	readonly sortOptions: ISelectOptions = [
 		{
-			label: 'Order by Ids (ASC)',
+			label: 'Order by ID (asc)',
+			ariaLabel: 'Order by ID (ascending)',
 			value: WcagFilterSortOptions.BY_ID_ASC
 		},
 		{
-			label: 'Order by Ids (DESC)',
+			label: 'Order by ID (desc)',
+			ariaLabel: 'Order by ID (descending)',
 			value: WcagFilterSortOptions.BY_ID_DESC
 		},
 		{
-			label: 'Group By Levels (ASC)',
+			label: 'Group By Level (asc)',
+			ariaLabel: 'Group By Level (ascending)',
 			value: WcagFilterSortOptions.BY_LEVELS_ASC
 		},
 		{
-			label: 'Group By Levels (DESC)',
+			label: 'Group By Level (desc)',
+			ariaLabel: 'Group By Level (descending)',
 			value: WcagFilterSortOptions.BY_LEVELS_DESC
 		},
 	];
