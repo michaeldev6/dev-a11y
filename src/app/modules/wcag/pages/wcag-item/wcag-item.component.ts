@@ -4,6 +4,7 @@ import {PageTitleService} from '../../../../core/services/page-title.service';
 import {ActivatedRoute, Data} from '@angular/router';
 import {IWCAGItem} from '../../../../shared/interfaces/wcag-item';
 import {takeUntil} from 'rxjs/operators';
+import {SkipLinksService} from '../../../../core/services/skip-links.service';
 
 @Component({
   selector: 'app-wcag-item',
@@ -16,9 +17,10 @@ export class WcagItemComponent extends BasePageComponent implements OnInit {
 
 	constructor(
 		protected pageTitleService: PageTitleService,
+		protected skipLinksService: SkipLinksService,
 		private route: ActivatedRoute,
 	) {
-		super(pageTitleService);
+		super(pageTitleService, skipLinksService);
 	}
 
 	ngOnInit() {
