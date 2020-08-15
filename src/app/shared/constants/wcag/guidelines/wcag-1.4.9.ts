@@ -1,6 +1,6 @@
 import {IWCAGItem} from '../../../interfaces/wcag-item';
 import {WCAGLevel} from '../../../enums/wcag-levels';
-import {WCAGItemTags} from '../../../enums/wcag-tags';
+import {WCAGItemTag} from '../../../enums/wcag-tags';
 import {WCAGIds} from '../../../enums/wcag-ids';
 
 const item: IWCAGItem = {
@@ -10,7 +10,7 @@ const item: IWCAGItem = {
   purpose: 'Easier to just use regular text',
   relatedItems: [WCAGIds.WCAG111, WCAGIds.WCAG145],
   level: WCAGLevel.AAA,
-  tags: [WCAGItemTags.TEXT, WCAGItemTags.MEDIA, WCAGItemTags.IMAGES],
+  tags: [WCAGItemTag.TEXT, WCAGItemTag.MEDIA, WCAGItemTag.IMAGES],
   ariaRoles: [],
   ariaAttributes: [],
   wcagLink: 'https://www.w3.org/WAI/WCAG21/Understanding/images-of-text-no-exception.html'

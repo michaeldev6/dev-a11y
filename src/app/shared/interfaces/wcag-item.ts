@@ -1,5 +1,5 @@
 import {WCAGLevel} from '../enums/wcag-levels';
-import {WCAGItemTags} from '../enums/wcag-tags';
+import {WCAGItemTag} from '../enums/wcag-tags';
 import {AriaRoles} from '../enums/aria-roles';
 import {AriaAttributes} from '../enums/aria-attributes';
 import {WCAGIds} from '../enums/wcag-ids';
@@ -11,7 +11,7 @@ export interface IWCAGItem {
   purpose: string;
   relatedItems?: WCAGIds[];
   level: WCAGLevel;
-  tags: WCAGItemTags[];
+  tags: WCAGItemTag[];
   ariaRoles?: AriaRoles[];
   ariaAttributes?: AriaAttributes[];
   wcagLink: string;

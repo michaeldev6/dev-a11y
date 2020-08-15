@@ -65,6 +65,7 @@ export class A11ySelectComponent extends BaseComponent {
 	onSelectChanged(element: EventTarget): void {
 		const value: string = (element as HTMLSelectElement).value;
 		this.selectedOption = this._mappedOptions[value];
+		this.onOptionSelected.emit(this.selectedOption);
 	}
 
 	setDefaultSelected(): void {

@@ -9,16 +9,10 @@
 	z-index: 100000000;
 }
 
-a {
-	@include border-radius(var(--border-radius));
-	background-color: var(--white);
-	color: var(--black);
-	display: inline-block;
-	text-decoration: none;
+button {
 	transition: none !important;
-
 	&.skip-link {
-		 @include hidden-focusable-button;
+		@include hidden-focusable-button;
 		font-size: 0.75rem;
 	}
 }

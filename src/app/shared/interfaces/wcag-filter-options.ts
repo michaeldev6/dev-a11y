@@ -1,6 +1,10 @@
-import {WcagFilterOptions} from '../enums/wcag-filter';
+import {WcagFilterSortOptions} from '../enums/wcag-filter';
+import {WCAGLevel} from '../enums/wcag-levels';
+import {WCAGItemTag} from '../enums/wcag-tags';
 
-// TODO: figure this out more later
 export interface IWcagFilterOptions {
-	display: WcagFilterOptions;
+	search?: string;
+	sort?: WcagFilterSortOptions;
+	levels?: Set<WCAGLevel>;
+	tags?: Set<WCAGItemTag>;
 }

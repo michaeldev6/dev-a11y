@@ -9,17 +9,23 @@ import {AnnouncerService} from '../../../core/services/announcer.service';
 })
 export class A11yInputComponent extends BaseComponent implements OnInit {
 
-	private inputValue = '';
+	private _value = '';
 
 	@Input() describedByText: string;
 	@Input() describedByIds: string;
 	@Input() filterLabel = 'Placeholder';
 	@Input() showDescribedByText = true;
 	@Input() useCloseButton = false;
+	@Input() set value(value: string) {
+		this._value = !!value ? value : '';
+	}
+	get value(): string {
+		return this._value;
+	}
 
-	@Output() onFilterChanged: EventEmitter<string> = new EventEmitter();
+	@Output() onValueChanged: EventEmitter<string> = new EventEmitter();
 
-	@ViewChild('inputFilter') inputFilter: ElementRef;
+	@ViewChild('input') inputFilter: ElementRef;
 
 	constructor(private announcer: AnnouncerService) {
 		super();
@@ -30,7 +36,7 @@ export class A11yInputComponent extends BaseComponent implements OnInit {
 	}
 
 	clearFilter(): void {
-		this.inputValue = '';
+		this._value = '';
 		if (!!this.inputFilter) {
 			this.inputFilter.nativeElement.value = '';
 			this.inputFilter.nativeElement.focus();
@@ -51,17 +57,17 @@ export class A11yInputComponent extends BaseComponent implements OnInit {
 	}
 
 	hasContent(): boolean {
-		return !!this.inputValue && this.inputValue.length > 0;
+		return !!this._value && this._value.length > 0;
 	}
 
 	onInputChanged(event: Event): void {
-		const inputEvent: InputEvent = event as InputEvent;
-		this.inputValue = inputEvent.data;
+		const input: HTMLInputElement = event.target as HTMLInputElement;
+		this._value = input.value;
 		this.triggerEvent();
 	}
 
 	private triggerEvent(): void {
-		this.onFilterChanged.emit(this.inputValue);
+		this.onValueChanged.emit(this._value);
 	}
 
 }

@@ -1,11 +1,11 @@
 <section aria-label="Skip links">
-	<a
-		[href]="'#' + link.id"
+	<button
+		type="button"
 		class="skip-link outline__white"
 		*ngFor="let link of skipLinks; trackBy: trackByFn"
-		(click)="$event.preventDefault(); focusOnElement(link.id)"
+		(click)=" focusOnElement(link.id)"
 	>
 		{{link.text}}
-	</a>
+	</button>
 </section>
 

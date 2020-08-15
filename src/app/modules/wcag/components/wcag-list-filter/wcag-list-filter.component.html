@@ -2,25 +2,43 @@
 	<app-a11y-input
 		filterLabel="Filter WCAG Items"
 		[useCloseButton]="true"
+		(onValueChanged)="whenFilterChanged($event)"
+		[value]="appliedFilters.search"
 	>
 		<i class="fa fa-filter" post-content></i>
 	</app-a11y-input>
 
 	<app-a11y-select
-		label="Display Options"
-		[options]="displayOptions"
+		label="Sorting Options"
+		[options]="sortOptions"
+		[selectedOption]="selectedDisplayOption"
+		(onOptionSelected)="whenOptionSelected($event)"
 	></app-a11y-select>
 
-	<app-a11y-disclosure summary="WCAG Levels" [expanded]="true">
-		<app-a11y-checkbox label="A"></app-a11y-checkbox>
-		<app-a11y-checkbox label="AA"></app-a11y-checkbox>
-		<app-a11y-checkbox label="AAA"></app-a11y-checkbox>
+	<app-a11y-disclosure summary="WCAG Levels">
+		<ul class="no-style">
+			<li *ngFor="let level of wcagLevels; trackBy: trackByFn">
+				<app-a11y-checkbox
+					[label]="level"
+					(onStateChanged)="whenWcagLevelChecked($event, level)"
+					[checkboxState]="appliedFilters?.levels?.has(level) ? checkboxState.Checked : checkboxState.Unchecked"
+				></app-a11y-checkbox>
+			</li>
+		</ul>
 	</app-a11y-disclosure>
 
 	<hr />
 
-	<app-a11y-disclosure summary="Tags" [expanded]="true">
-		<app-a11y-checkbox label="Visual"></app-a11y-checkbox>
-		<app-a11y-checkbox label="Text"></app-a11y-checkbox>
+	<app-a11y-disclosure summary="Tags">
+		<ul class="no-style">
+			<li *ngFor="let tag of wcagTags; trackBy: trackByFn">
+				<app-a11y-checkbox
+					[label]="tag"
+					(onStateChanged)="whenWcagTagChecked($event, tag)"
+					[checkboxState]="appliedFilters?.tags?.has(tag) ? checkboxState.Checked : checkboxState.Unchecked"
+				></app-a11y-checkbox>
+			</li>
+		</ul>
+
 	</app-a11y-disclosure>
 </div>
